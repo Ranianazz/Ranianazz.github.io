@@ -1,0 +1,22 @@
+section {
+  text-align: center;
+  border: 1px solid rgb(8, 9, 8);
+}
+
+body {
+  background-color: beige;
+  font-size: 1.1rem;
+  font-family: "Lato", sans-serif; /* Default font */
+}
+
+/* Apply Tektur font to headings */
+.tektur-font {
+  font-family: "Tektur", sans-serif;
+  font-weight: 700;
+}
+
+/* Apply Lato font to paragraphs */
+.lato-font {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
