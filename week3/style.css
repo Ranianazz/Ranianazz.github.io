@@ -1,0 +1,69 @@
+* {
+  color: hotpink;
+}
+h1 {
+  color: limegreen;
+}
+h3 {
+  color: red;
+  font-size: 1.5rem;
+}
+li {
+  color: blueviolet;
+}
+.blue-color {
+  color: blue;
+}
+#outcome {
+  color: brown;
+  border: 4px dashed violet;
+}
+body {
+  background-color: beige;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+h1 {
+  color: rgb(162, 94, 144);
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+section {
+  text-align: center;
+  border: 1px solid green;
+}
+
+/*h1 {
+    color: red;
+}
+h2 {
+    color:green;
+}
+h3 {
+    color:blue;
+}
+p {
+    color:grey
+}
+*/
+/* cmd / */
+/*
+curly braces {}
+square bracket []
+round bracket ()
+semicolon ;
+colon :
+syntax : rules of lang
+parantheses <>
+hyphon -
+dot .
+hash #
+
+*/
