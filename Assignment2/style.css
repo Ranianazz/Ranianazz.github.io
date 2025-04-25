@@ -4,6 +4,8 @@
   --main-bg-color: #76519b;
   --main-text-color: #f2f2f2;
   --main-btn-bg-color: #755d7e;
+  --nav-btn-bg: #6a4a8a;
+  --nav-btn-hover: #5d3d7a;
 }
 
 body,
@@ -25,8 +27,6 @@ body {
   justify-content: space-between;
 }
 
-/* Add additional styles as needed */
-
 /* Create a container for the main content */
 .container {
   max-width: 1000px;
@@ -43,25 +43,43 @@ header {
   width: 100%;
 }
 
-/* Navigation styling */
+/* Navigation styling - Key changes here */
 nav {
-  margin-top: 20px;
-  text-align: center;
+  margin: 20px 0;
+  width: 100%;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  padding: 0;
+  margin: 0;
+  gap: 10px; /* Space between buttons */
+  flex-wrap: nowrap; /* Prevent wrapping to new line */
 }
 
 nav ul li {
-  margin-right: 20px;
+  margin: 0;
+  display: inline-block; /* Ensure items stay in line */
 }
 
-nav a {
+.nav-button {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--main-text-color);
+  background-color: var(--nav-btn-bg);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.nav-button:hover {
+  background-color: var(--nav-btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Media player styling */
@@ -117,4 +135,18 @@ footer {
   text-align: center;
   padding: 10px 0;
   width: 100%;
+}
+
+/* Responsive adjustments - Only stack on very small screens */
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }
