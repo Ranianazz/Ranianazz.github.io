@@ -7,85 +7,92 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Scope+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Scope+One&display=swap"
       rel="stylesheet"
     />
     <style>
       /* Base styles */
       body {
-        margin: 0;
-        padding: 0;
-        font-family: "Scope One", sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f5f5f5;
-        min-height: 100vh;
+        background-color: rgb(247, 243, 246);
+        font-size: 1.1rem;
+        font-family: "Lato", sans-serif; /* Default font */
         display: flex;
         justify-content: center;
         align-items: center;
+        min-height: 100vh;
       }
 
-      #text-container {
-        width: 90%;
+      /* Section Styling */
+      section {
+        text-align: left;
+        padding: 25px;
+        border: 5px solid rgb(142, 99, 127);
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.207); /* Light shadow */
+        margin: 20px;
+        border-radius: 8px; /* Rounded corners */
+        background-color: #fff; /* White background */
         max-width: 800px;
-        padding: 40px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin: 20px auto;
+        width: 90%;
       }
 
+      /* Heading Styles */
       .tektur-font {
-        font-family: "Barlow Semi Condensed", sans-serif;
-        font-weight: 600;
-        color: #76519b;
-        margin-bottom: 20px;
+        font-family: "Tektur", sans-serif;
         text-align: center;
+        font-weight: 700;
+        color: rgb(94, 53, 92); /* A rich color for the heading */
+        font-size: 2.5rem;
+        margin-bottom: 20px;
       }
 
-      h4 {
-        font-family: "Scope One", sans-serif;
+      /* Paragraph Styles */
+      .lato-font {
+        font-family: "Lato", sans-serif;
         font-weight: 400;
-        color: #555;
-        margin-bottom: 30px;
-        text-align: center;
+        color: #333;
       }
 
       p {
-        text-align: left;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
+        line-height: 1.6;
       }
 
-      /* Responsive adjustments */
+      #text {
+        margin: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Responsive Styles */
       @media (max-width: 768px) {
-        #text-container {
-          padding: 30px 20px;
+        section {
+          padding: 20px;
         }
 
         .tektur-font {
-          font-size: 1.8rem;
+          font-size: 2rem;
         }
 
-        p {
+        .lato-font {
           font-size: 1rem;
         }
       }
     </style>
   </head>
   <body>
-    <div id="text-container">
+    <div id="text">
       <section>
-        <h1 class="tektur-font">Home page</h1>
-        <h4>Welcome to the home page.</h4>
-        <p>
-          Here is the home page for the media player. In this section we will
-          introduce the media player. The purpose of this media player is to
-          create a new innovative approach on what a typical media player looks
-          like. Thinking outside the realms of stereotypical media players. This
-          design was chosen to complement the pre-existing design of the
-          artistic media. Utilizing a mono tone of purple to make the media
-          player pop.
+        <h1 class="tektur-font">About RN</h1>
+        <h4 class="lato-font">Welcome to RN.</h4>
+        <p class="lato-font">
+          RN is an online platform that serves as a stage for free stock music
+          video content. We proudly showcase artistic videos that often remain
+          hidden from view, providing them with a place to be appreciated by
+          others. Our mission is to give a voice to artists who want to present
+          their work anonymously, allowing their creativity to shine. At RN, we
+          take great pride in displaying our collection of visually stunning
+          content that celebrates the beauty of artistry that is frequently
+          overlooked.
         </p>
       </section>
     </div>
