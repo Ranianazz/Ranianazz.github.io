@@ -4,7 +4,7 @@
   --main-bg-color: #706273;
   --main-text-color: #f2f2f2;
   --main-btn-bg-color: #a98cac;
-  --nav-btn-bg: #000000;
+  --nav-btn-bg: #5e486b;
   --nav-btn-hover: #836787;
 }
 
@@ -80,7 +80,7 @@ body {
 
 /* Video Art heading */
 .video-art-heading {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 5rem;
   text-align: center;
   margin: 30px 0;

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize both media players
+  // Initialize media player
   setupMediaPlayer(
     "custom-video-player-1",
     "play-pause-btn-1",
@@ -7,22 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "progress-bar-fill-1",
     "fullscreen-btn-1"
   );
-  setupMediaPlayer(
-    "custom-video-player-2",
-    "play-pause-btn-2",
-    "play-pause-img-2",
-    "progress-bar-fill-2",
-    "fullscreen-btn-2"
-  );
 
-  /**
-   * Sets up all controls for a media player
-   * @param {string} videoId - ID of video element
-   * @param {string} playPauseBtnId - ID of play/pause button
-   * @param {string} playPauseImgId - ID of play/pause image
-   * @param {string} progressBarId - ID of progress bar
-   * @param {string} fullscreenBtnId - ID of fullscreen button
-   */
   function setupMediaPlayer(
     videoId,
     playPauseBtnId,
@@ -48,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set up fullscreen functionality
     fullscreenBtn.addEventListener("click", () =>
-      toggleFullscreen(mediaPlayer, fullscreenBtn)
+      toggleFullscreen(mediaPlayer)
     );
 
     // Update progress bar during playback
@@ -56,32 +41,22 @@ document.addEventListener("DOMContentLoaded", function () {
       updateProgressBar(video, progressBar)
     );
 
-    // Update UI when video ends
+    // Reset to play icon when video ends
     video.addEventListener("ended", () => {
-      playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
+      playPauseImg.src = "Assignment2/play.png"; // or any path to your play icon
     });
   }
 
-  /**
-   * Toggles play/pause state of video
-   * @param {HTMLVideoElement} video - Video element
-   * @param {HTMLImageElement} playPauseImg - Play/pause image element
-   */
   function togglePlayPause(video, playPauseImg) {
     if (video.paused || video.ended) {
       video.play();
-      playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/pause--v1.png";
+      playPauseImg.src = "pause.png"; // switch to pause image
     } else {
       video.pause();
-      playPauseImg.src = "https://img.icons8.com/ios-glyphs/30/play--v1.png";
+      playPauseImg.src = "play.png"; // switch back to play image
     }
   }
 
-  /**
-   * Updates progress bar to reflect current playback position
-   * @param {HTMLVideoElement} video - Video element
-   * @param {HTMLElement} progressBar - Progress bar element
-   */
   function updateProgressBar(video, progressBar) {
     if (video.duration) {
       const value = (video.currentTime / video.duration) * 100;
@@ -89,34 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  /**
-   * Toggles fullscreen mode for media player
-   * @param {HTMLElement} mediaPlayer - Media player container
-   * @param {HTMLButtonElement} fullscreenBtn - Fullscreen button
-   */
-  function toggleFullscreen(mediaPlayer, fullscreenBtn) {
+  function toggleFullscreen(mediaPlayer) {
     if (!document.fullscreenElement) {
-      // Enter fullscreen
-      if (mediaPlayer.requestFullscreen) {
-        mediaPlayer.requestFullscreen().catch((err) => {
-          console.error("Fullscreen error:", err);
-        });
-      }
+      mediaPlayer.requestFullscreen().catch((err) => {
+        console.error("Fullscreen error:", err);
+      });
     } else {
-      // Exit fullscreen
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
+      document.exitFullscreen();
     }
   }
 
-  // Update fullscreen button appearance when mode changes
+  // Optional: Update fullscreen button label (not required for basic fullscreen)
   document.addEventListener("fullscreenchange", updateFullscreenButtons);
-  document.addEventListener("webkitfullscreenchange", updateFullscreenButtons);
 
-  /**
-   * Updates all fullscreen buttons based on current fullscreen state
-   */
   function updateFullscreenButtons() {
     const isFullscreen = !!document.fullscreenElement;
     document.querySelectorAll(".control-btn").forEach((btn) => {
