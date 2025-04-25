@@ -35,53 +35,88 @@ body {
 }
 
 /* Header styling */
-header {
+/* Header styling */
+.main-header {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-  padding: 10px 0;
-  text-align: center;
+  padding: 15px 0;
   width: 100%;
 }
 
-/* Navigation styling - Key changes here */
-nav {
-  margin: 20px 0;
-  width: 100%;
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-nav ul {
+.site-title {
+  font-size: 2.2rem;
+  margin: 0;
+  text-align: left;
+}
+
+/* Navigation styling */
+.main-nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
+  gap: 10px;
+  margin: 0;
   padding: 0;
-  margin: 0;
-  gap: 10px; /* Space between buttons */
-  flex-wrap: nowrap; /* Prevent wrapping to new line */
-}
-
-nav ul li {
-  margin: 0;
-  display: inline-block; /* Ensure items stay in line */
 }
 
 .nav-button {
   text-decoration: none;
   color: var(--main-text-color);
   background-color: var(--nav-btn-bg);
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
   font-weight: bold;
-  transition: all 0.3s ease;
-  display: inline-block;
-  white-space: nowrap; /* Prevent text wrapping */
+  transition: all 0.2s ease;
 }
 
 .nav-button:hover {
   background-color: var(--nav-btn-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .site-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .site-title {
+    font-size: 1.8rem;
+  }
+
+  .main-nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
 /* Media player styling */
 .media-player {
   width: 100%;
