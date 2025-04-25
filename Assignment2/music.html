@@ -11,14 +11,13 @@
       rel="stylesheet"
     />
     <style>
-      /* Base styles */
       body {
         margin: 0;
         padding: 0;
         font-family: "Scope One", sans-serif;
         line-height: 1.6;
-        color: #333;
-        background-color: #f5f5f5;
+        color: #000000;
+        background-color: #faf9f9;
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -29,16 +28,21 @@
         width: 90%;
         max-width: 800px;
         padding: 40px;
-        background-color: white;
+        background-color: rgb(154, 120, 186);
+        background: linear-gradient(
+          135deg,
+          rgb(154, 120, 186),
+          rgb(224, 199, 241)
+        );
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.429);
         margin: 20px auto;
       }
 
       .tektur-font {
         font-family: "Barlow Semi Condensed", sans-serif;
         font-weight: 600;
-        color: #76519b;
+        color: #000000;
         margin-bottom: 20px;
         text-align: center;
       }
@@ -46,15 +50,21 @@
       h4 {
         font-family: "Scope One", sans-serif;
         font-weight: 400;
-        color: #555;
+        color: #000000;
         margin-bottom: 30px;
         text-align: center;
       }
 
       p {
         text-align: left;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-size: 1.1rem;
+      }
+
+      .audio-player {
+        width: 100%;
+        margin-bottom: 10px;
+        display: block;
       }
 
       /* Responsive adjustments */
@@ -76,17 +86,31 @@
   <body>
     <div id="text-container">
       <section>
-        <h1 class="tektur-font">music page</h1>
-        <h4>this is a music page</h4>
-        <p>
-          Here is the home page for the media player. In this section we will
-          introduce the media player. The purpose of this media player is to
-          create a new innovative approach on what a typical media player looks
-          like. Thinking outside the realms of stereotypical media players. This
-          design was chosen to complement the pre-existing design of the
-          artistic media. Utilizing a mono tone of purple to make the media
-          player pop.
+        <h1 class="tektur-font">Music mp3 players</h1>
+        <p style="text-align: center">
+          Take a moment to listen and enjoy the tunes!
         </p>
+
+        <h1><strong>Kugelsicher</strong> by TremoxBeatz</h1>
+        <audio class="audio-player" controls>
+          <source src="music1.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <p>Music by Jerome F. from Pixabay</p>
+
+        <h1><strong>Gardens - </strong> Gardens - Stylish Chill</h1>
+        <audio class="audio-player" controls>
+          <source src="music2.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <p>Music by Oleksandr Stepanov from Pixabay</p>
+
+        <h1><strong>Alone</strong></h1>
+        <audio class="audio-player" controls>
+          <source src="music3.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <p>Music by Bohdan Kuzmin from Pixabay</p>
       </section>
     </div>
   </body>
