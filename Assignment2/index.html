@@ -3,77 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Media Player Website</title>
+    <title>RN Media Player</title>
+    <!-- Font family import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Scope+One&display=swap" rel="stylesheet"> 
-
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- Header Section -->
-    <!-- Header Section -->
-<header class="main-header">
-  <div class="header-content">
-    <h1 class="site-title">Media Player Website</h1>
-     <!-- Navigation Section -->
-    <nav class="main-nav">
-      <ul>
-        <li><a href="home.html" class="nav-button">Home</a></li>
-        <li><a href="videos.html" class="nav-button">Videos</a></li>
-        <li><a href="music.html" class="nav-button">Music</a></li>
-        <li><a href="playlists.html" class="nav-button">Playlists</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <header class="main-header">
+      <div class="header-content">
+        <h1 class="site-title">RN Media Player</h1>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#" class="nav-button">Home</a></li>
+            <li><a href="#" class="nav-button">Videos</a></li>
+            <li><a href="#" class="nav-button">Music</a></li>
+            <li><a href="#" class="nav-button">Playlists</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  
-  </body>
+    <h1 class="video-art-heading">Video Art</h1>
 
-  <h1 class="video-art-heading">Video art</h1>
-</html>
-
-   
-
-    <!-- Main Content Section -->
     <main class="container">
-      <!-- Media Player Section -->
+      <!-- First Media Player -->
       <div class="media-player">
-        <video id="custom-video-player" controls>
+        <video id="custom-video-player-1">
           <source
             src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
             type="video/mp4"
           />
         </video>
         <div class="custom-controls">
-          <button id="play-pause-btn" onclick="togglePlayPause()">
+          <button id="play-pause-btn-1" class="control-btn">
             <img
-              id="play-pause-img"
+              id="play-pause-img-1"
               src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
               alt="Play Button"
               width="24"
               height="24"
             />
           </button>
-          <!-- add the missing buttons or functionality here -->
           <div class="progress-bar">
-            <span id="progress-bar-fill"></span>
+            <span id="progress-bar-fill-1"></span>
           </div>
+          <button id="fullscreen-btn-1" class="control-btn">
+            <img
+              src="full-screen.png"
+              alt="Fullscreen"
+              width="24"
+              height="24"
+            />
+          </button>
         </div>
       </div>
 
-      <!-- Additional Content Section -->
       <section>
-        <h2>Artistic media by</h2>
-        <p>this is a artistic music media player</p>
-        <!-- Add more content as needed -->
+        <h2>Art video</h2>
+        <p>This is an art video</p>
       </section>
+
+      <!-- Second Media Player -->
+      <div class="media-player">
+        <video id="custom-video-player-2">
+          <source
+            src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/berry-bunch_handheld-windmill-fan.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="custom-controls">
+          <button id="play-pause-btn-2" class="control-btn">
+            <img
+              id="play-pause-img-2"
+              src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+              alt="Play Button"
+              width="24"
+              height="24"
+            />
+          </button>
+          <div class="progress-bar">
+            <span id="progress-bar-fill-2"></span>
+          </div>
+          <button id="fullscreen-btn-2" class="control-btn">
+            <img
+              src="full-screen.png"
+              alt="Fullscreen"
+              width="24"
+              height="24"
+            />
+          </button>
+        </div>
+      </div>
     </main>
 
-    <!-- Footer Section -->
     <footer>
       <p>&copy; 2024 Media Player Website. All rights reserved.</p>
       <a href="https://icons8.com/icon/59862/play">Play</a> icon by

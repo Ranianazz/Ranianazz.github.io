@@ -1,11 +1,11 @@
 :root {
-  --primary-bg-color: #dfd0e4;
+  --primary-bg-color: #ffffff;
   --text-color: #333;
-  --main-bg-color: #806899;
+  --main-bg-color: #706273;
   --main-text-color: #f2f2f2;
-  --main-btn-bg-color: #755d7e;
-  --nav-btn-bg: #280e42;
-  --nav-btn-hover: #5d3d7a;
+  --main-btn-bg-color: #a98cac;
+  --nav-btn-bg: #000000;
+  --nav-btn-hover: #836787;
 }
 
 /* Font family definitions */
@@ -43,15 +43,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  font-weight: 400; /* Regular weight as default */
+  font-weight: 400;
 }
 
 /* Create a container for the main content */
 .container {
   max-width: 1000px;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Header styling */
@@ -72,18 +72,15 @@ body {
 }
 
 .site-title {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 600; /* Semi-bold */
+  font-weight: 600;
   font-size: 2.2rem;
   margin: 0;
-  text-align: left;
   letter-spacing: 0.5px;
 }
 
 /* Video Art heading */
 .video-art-heading {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 100; /* Thin weight */
+  font-weight: 300;
   font-size: 5rem;
   text-align: center;
   margin: 30px 0;
@@ -102,7 +99,6 @@ body {
 }
 
 .nav-button {
-  font-family: "Barlow Semi Condensed", sans-serif;
   text-decoration: none;
   color: var(--main-text-color);
   background-color: var(--nav-btn-bg);
@@ -122,11 +118,17 @@ body {
 /* Media player styling */
 .media-player {
   width: 100%;
-  margin: 0 auto;
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .media-player video {
-  max-width: 100%;
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
 }
 
 .custom-controls {
@@ -134,16 +136,15 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-top: 10px;
-  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--main-btn-bg-color);
 }
 
 .custom-controls button {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  background-color: var(--main-btn-bg-color);
+  background-color: transparent;
   color: var(--main-text-color);
   border: none;
-  padding: 8px 12px;
+  padding: 8px;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -152,31 +153,34 @@ body {
 }
 
 .progress-bar {
-  width: 100%;
-  height: 10px;
-  background-color: #ddd;
-  margin-top: 10px;
+  flex-grow: 1;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  margin: 0 15px;
   overflow: hidden;
 }
 
 .progress-bar span {
   display: block;
   height: 100%;
-  background-color: var(--main-bg-color);
+  background-color: white;
   width: 0;
-  transition: width 0.3s ease;
+  transition: width 0.1s linear;
 }
 
 /* Content section styling */
+section {
+  padding: 20px 0;
+}
+
 section h2 {
-  font-family: "Barlow Semi Condensed", sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
-  margin: 20px 0 10px;
+  margin-bottom: 10px;
 }
 
 section p {
-  font-family: "Barlow Semi Condensed", sans-serif;
   font-weight: 400;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -184,18 +188,22 @@ section p {
 
 /* Footer styling */
 footer {
-  font-family: "Barlow Semi Condensed", sans-serif;
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   text-align: center;
-  padding: 10px 0;
+  padding: 20px 0;
   width: 100%;
-  font-weight: 400;
+  margin-top: 40px;
+}
+
+footer p {
+  margin-bottom: 10px;
 }
 
 footer a {
   color: var(--main-text-color);
   font-weight: 500;
+  text-decoration: none;
 }
 
 /* Responsive adjustments */
@@ -221,12 +229,21 @@ footer a {
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
   .video-art-heading {
     font-size: 2.5rem;
+    margin: 20px 0;
   }
 
   .nav-button {
     padding: 8px 12px;
     font-size: 14px;
+  }
+
+  .custom-controls {
+    padding: 8px 10px;
   }
 }
