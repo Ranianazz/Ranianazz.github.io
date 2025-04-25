@@ -1,11 +1,30 @@
 :root {
   --primary-bg-color: #dfd0e4;
   --text-color: #333;
-  --main-bg-color: #76519b;
+  --main-bg-color: #806899;
   --main-text-color: #f2f2f2;
   --main-btn-bg-color: #755d7e;
-  --nav-btn-bg: #6a4a8a;
+  --nav-btn-bg: #280e42;
   --nav-btn-hover: #5d3d7a;
+}
+
+/* Font family definitions */
+.barlow-semi-condensed-thin {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.barlow-semi-condensed-regular {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-semi-condensed-bold {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 body,
@@ -17,7 +36,7 @@ ul {
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
   background-color: var(--primary-bg-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -25,6 +44,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  font-weight: 400; /* Regular weight as default */
 }
 
 /* Create a container for the main content */
@@ -34,7 +54,6 @@ body {
   padding: 10px;
 }
 
-/* Header styling */
 /* Header styling */
 .main-header {
   background-color: var(--main-bg-color);
@@ -53,9 +72,24 @@ body {
 }
 
 .site-title {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 600; /* Semi-bold */
   font-size: 2.2rem;
   margin: 0;
   text-align: left;
+  letter-spacing: 0.5px;
+}
+
+/* Video Art heading */
+.video-art-heading {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 100; /* Thin weight */
+  font-size: 5rem;
+  text-align: center;
+  margin: 30px 0;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Navigation styling */
@@ -68,14 +102,16 @@ body {
 }
 
 .nav-button {
+  font-family: "Barlow Semi Condensed", sans-serif;
   text-decoration: none;
   color: var(--main-text-color);
   background-color: var(--nav-btn-bg);
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: 500;
   transition: all 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
 .nav-button:hover {
@@ -83,40 +119,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .site-title {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .main-nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .site-title {
-    font-size: 1.8rem;
-  }
-
-  .main-nav ul {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
 /* Media player styling */
 .media-player {
   width: 100%;
@@ -137,6 +139,7 @@ body {
 }
 
 .custom-controls button {
+  font-family: "Barlow Semi Condensed", sans-serif;
   background-color: var(--main-btn-bg-color);
   color: var(--main-text-color);
   border: none;
@@ -145,6 +148,7 @@ body {
   font-size: 16px;
   display: flex;
   align-items: center;
+  font-weight: 500;
 }
 
 .progress-bar {
@@ -163,21 +167,62 @@ body {
   transition: width 0.3s ease;
 }
 
+/* Content section styling */
+section h2 {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin: 20px 0 10px;
+}
+
+section p {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 /* Footer styling */
 footer {
+  font-family: "Barlow Semi Condensed", sans-serif;
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   text-align: center;
   padding: 10px 0;
   width: 100%;
+  font-weight: 400;
 }
 
-/* Responsive adjustments - Only stack on very small screens */
-@media (max-width: 480px) {
-  nav ul {
-    flex-direction: row;
+footer a {
+  color: var(--main-text-color);
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .site-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .video-art-heading {
+    font-size: 3.5rem;
+  }
+
+  .main-nav ul {
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-art-heading {
+    font-size: 2.5rem;
   }
 
   .nav-button {
