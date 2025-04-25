@@ -1,9 +1,9 @@
 :root {
-  --primary-bg-color: #f4f4f4;
+  --primary-bg-color: #dfd0e4;
   --text-color: #333;
-  --main-bg-color: #333;
-  --main-text-color: #fff;
-  --main-btn-bg-color: #938989;
+  --main-bg-color: #76519b;
+  --main-text-color: #f2f2f2;
+  --main-btn-bg-color: #755d7e;
 }
 
 body,
