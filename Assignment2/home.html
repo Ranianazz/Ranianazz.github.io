@@ -1,61 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Set character encoding and make the page responsive on all devices -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title shown in the browser tab -->
     <title>Media Player Home</title>
+
+    <!-- Preconnects for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts: Barlow Semi Condensed and Scope One -->
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Scope+One&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Internal CSS for styling the layout and typography -->
     <style>
-      /* Base styles */
+      /* Base styles for the entire body */
       body {
-        background-color: rgb(247, 243, 246);
+        background-color: rgb(247, 243, 246); /* Light background */
         font-size: 1.1rem;
-        font-family: "Lato", sans-serif; /* Default font */
-        display: flex;
+        font-family: "Lato", sans-serif; /* Default font if none is specified */
+        display: flex; /* Center the content */
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        min-height: 100vh; /* Ensure it fills the screen */
       }
 
-      /* Section Styling */
+      /* Styling the section block */
       section {
         text-align: left;
         padding: 25px;
-        border: 5px solid rgb(142, 99, 127);
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.207); /* Light shadow */
+        border: 5px solid rgb(142, 99, 127); /* Decorative border */
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.207); /* Soft shadow for depth */
         margin: 20px;
         border-radius: 8px; /* Rounded corners */
-        background-color: #fff; /* White background */
+        background-color: #fff; /* White background for contrast */
         max-width: 800px;
         width: 90%;
       }
 
-      /* Heading Styles */
+      /* Heading style using "Tektur" font */
       .tektur-font {
         font-family: "Tektur", sans-serif;
         text-align: center;
         font-weight: 700;
-        color: rgb(94, 53, 92); /* A rich color for the heading */
+        color: rgb(94, 53, 92); /* Deep purple tone */
         font-size: 2.5rem;
         margin-bottom: 20px;
       }
 
-      /* Paragraph Styles */
+      /* Paragraph and subheading font style */
       .lato-font {
         font-family: "Lato", sans-serif;
         font-weight: 400;
-        color: #333;
+        color: #333; /* Dark gray for readability */
       }
 
+      /* General paragraph spacing */
       p {
-        line-height: 1.6;
+        line-height: 1.6; /* Improve readability */
       }
 
+      /* Container for centering the section */
       #text {
         margin: 20px;
         width: 100%;
@@ -63,7 +74,7 @@
         justify-content: center;
       }
 
-      /* Responsive Styles */
+      /* Responsive design for tablets and smaller screens */
       @media (max-width: 768px) {
         section {
           padding: 20px;
@@ -79,11 +90,18 @@
       }
     </style>
   </head>
+
   <body>
+    <!-- Main content container -->
     <div id="text">
       <section>
+        <!-- Main heading -->
         <h1 class="tektur-font">About RN</h1>
+
+        <!-- Subheading -->
         <h4 class="lato-font">Welcome to RN.</h4>
+
+        <!-- Description of RN’s purpose and values -->
         <p class="lato-font">
           RN is an online platform that serves as a stage for free stock music
           video content. We proudly showcase artistic videos that often remain

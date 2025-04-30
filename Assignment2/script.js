@@ -1,13 +1,17 @@
+// Wait for the entire DOM to load before running script
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize media player
+  // Initialize the media player with specific element IDs
   setupMediaPlayer(
-    "custom-video-player-1",
-    "play-pause-btn-1",
-    "play-pause-img-1",
-    "progress-bar-fill-1",
-    "fullscreen-btn-1"
+    "custom-video-player-1", // ID of the video element
+    "play-pause-btn-1", // ID of the play/pause button
+    "play-pause-img-1", // ID of the image inside the play/pause button
+    "progress-bar-fill-1", // ID of the progress bar fill element
+    "fullscreen-btn-1" // ID of the fullscreen button
   );
 
+  /**
+   * Sets up a custom media player with given element IDs
+   */
   function setupMediaPlayer(
     videoId,
     playPauseBtnId,
@@ -15,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     progressBarId,
     fullscreenBtnId
   ) {
+    // Get DOM elements by ID
     const video = document.getElementById(videoId);
     const playPauseBtn = document.getElementById(playPauseBtnId);
     const playPauseImg = document.getElementById(playPauseImgId);
@@ -22,65 +27,81 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullscreenBtn = document.getElementById(fullscreenBtnId);
     const mediaPlayer = playPauseBtn.closest(".media-player");
 
-    // Remove default controls
+    // Hide native video controls to replace them with custom controls
     video.removeAttribute("controls");
 
-    // Set up play/pause functionality
+    // Play or pause video when play/pause button is clicked
     playPauseBtn.addEventListener("click", () =>
       togglePlayPause(video, playPauseImg)
     );
+
+    // Also allow clicking directly on video to play/pause
     video.addEventListener("click", () => togglePlayPause(video, playPauseImg));
 
-    // Set up fullscreen functionality
+    // Enter or exit fullscreen when fullscreen button is clicked
     fullscreenBtn.addEventListener("click", () =>
       toggleFullscreen(mediaPlayer)
     );
 
-    // Update progress bar during playback
+    // Continuously update progress bar as video plays
     video.addEventListener("timeupdate", () =>
       updateProgressBar(video, progressBar)
     );
 
-    // Reset to play icon when video ends
+    // Reset to play icon when video finishes
     video.addEventListener("ended", () => {
-      playPauseImg.src = "Assignment2/play.png"; // or any path to your play icon
+      playPauseImg.src = "Assignment2/play.png"; // Set to play icon on end
     });
   }
 
+  /**
+   * Toggles video play/pause state and updates button icon
+   */
   function togglePlayPause(video, playPauseImg) {
     if (video.paused || video.ended) {
-      video.play();
-      playPauseImg.src = "pause.png"; // switch to pause image
+      video.play(); // Start playback
+      playPauseImg.src = "pause.png"; // Change icon to pause
     } else {
-      video.pause();
-      playPauseImg.src = "play.png"; // switch back to play image
+      video.pause(); // Pause playback
+      playPauseImg.src = "play.png"; // Change icon to play
     }
   }
 
+  /**
+   * Updates the progress bar width as video plays
+   */
   function updateProgressBar(video, progressBar) {
     if (video.duration) {
       const value = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = value + "%";
+      progressBar.style.width = value + "%"; // Fill bar based on % complete
     }
   }
 
+  /**
+   * Toggles fullscreen mode on or off for the media player
+   */
   function toggleFullscreen(mediaPlayer) {
     if (!document.fullscreenElement) {
+      // Request fullscreen if not already in it
       mediaPlayer.requestFullscreen().catch((err) => {
         console.error("Fullscreen error:", err);
       });
     } else {
+      // Exit fullscreen if already in it
       document.exitFullscreen();
     }
   }
 
-  // Optional: Update fullscreen button label (not required for basic fullscreen)
+  /**
+   * Optionally updates the fullscreen button tooltip when mode changes
+   */
   document.addEventListener("fullscreenchange", updateFullscreenButtons);
 
   function updateFullscreenButtons() {
     const isFullscreen = !!document.fullscreenElement;
     document.querySelectorAll(".control-btn").forEach((btn) => {
       if (btn.id.includes("fullscreen")) {
+        // Change title text based on fullscreen state
         btn.title = isFullscreen ? "Exit fullscreen (Esc)" : "Fullscreen";
       }
     });

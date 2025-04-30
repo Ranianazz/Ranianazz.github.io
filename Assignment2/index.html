@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Sets the character encoding and responsive layout -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>RN Media Player</title>
-    <!-- Font family import -->
+
+    <!-- Importing custom font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Linking CSS files for resetting default styles and custom styles -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Linking JavaScript file to enable media player interaction -->
     <script src="script.js" defer></script>
   </head>
+
   <body>
+    <!-- Site header with navigation -->
     <header class="main-header">
       <div class="header-content">
+        <!-- Website title -->
         <h1 class="site-title">RN Media Player</h1>
+
+        <!-- Main site navigation -->
         <nav class="main-nav">
           <ul>
+            <!-- Navigation links -->
             <li><a href="home.html" class="nav-button">About</a></li>
             <li><a href="videos.html" class="nav-button">Videos</a></li>
             <li><a href="music.html" class="nav-button">Music</a></li>
@@ -29,18 +42,24 @@
       </div>
     </header>
 
+    <!-- Heading for the main content -->
     <h1 class="video-art-heading">Video Art</h1>
 
+    <!-- Main content container -->
     <main class="container">
-      <!-- First Media Player -->
+      <!-- Custom video player section -->
       <div class="media-player">
+        <!-- HTML5 video element -->
         <video id="custom-video-player-1">
           <source
             src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
             type="video/mp4"
           />
         </video>
+
+        <!-- Custom controls overlay -->
         <div class="custom-controls">
+          <!-- Play/pause button -->
           <button id="play-pause-btn-1" class="control-btn">
             <img
               id="play-pause-img-1"
@@ -51,9 +70,12 @@
             />
           </button>
 
+          <!-- Progress bar for video playback -->
           <div class="progress-bar">
             <span id="progress-bar-fill-1"></span>
           </div>
+
+          <!-- Fullscreen button -->
           <button id="fullscreen-btn-1" class="control-btn">
             <img
               src="full-screen.png"
@@ -65,9 +87,11 @@
         </div>
       </div>
 
+      <!-- Descriptive section explaining design decisions -->
       <section>
         <h2>Art video</h2>
         <p>
+          <!-- Explanation of UI/UX design and technical implementation -->
           This design was created to complement the art video. I chose to keep
           the video in its original location because the positioning worked well
           visually. To maintain a cohesive UI, I used a purple monotone that
@@ -89,6 +113,7 @@
       </section>
     </main>
 
+    <!-- Footer with icon attributions -->
     <footer>
       <p>&copy; 2024 Media Player Website. All rights reserved.</p>
       <a href="https://icons8.com/icon/59862/play">Play</a> icon by
