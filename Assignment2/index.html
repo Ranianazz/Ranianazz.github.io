@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Using custom fonts from Google Fonts to give the site a calming, modern, and approachable feel -->
     <link
       href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Grotesk&display=swap"
       rel="stylesheet"
@@ -17,26 +18,17 @@
   <h1>Minfulness Media Player</h1>
 
   <body>
-    <!-- as always we have the outer box that acts as a container for video  -->
+    <!-- The outer container holds the entire layout, helping to center and structure the page -->
     <div class="outer">
-      <!-- We divide the content of the box into three sections
-      1. video-container = it contains the videoplayer as well as playlist
-      2. video-title = it contains meta information about video currently being played
-      3. video-controls = it gives options for users to control the video such as 
-         play, pause, make it fullscreen etc.  -->
       <section class="video-container">
-        <!-- we further divide video-container into two sections
-        1. video player
-        2. video-list: a section containing clickable images of videos 
-           that can be played.  -->
+        <!-- Video player section where the user can play videos -->
         <video id="my-video" controls>
           <source src="stardust.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
+        <!-- Video thumbnails are clickable to play the videos from different sources -->
         <section class="video-list">
-          <!-- We use buttons, whenever user clicks on them, the correspoding 
-          video will be played  -->
           <button id="first-video-btn">
             <img id="first-video-img" src="zenscape.png" alt="Zenscape" />
           </button>
@@ -45,15 +37,15 @@
           </button>
         </section>
       </section>
-      <section class="video-title">
-        <!-- in this section, we display the name of the video and current playtime -->
-        <h1>Now Playing: <span id="video-name"></span></h1>
 
+      <section class="video-title">
+        <!-- Displays video name and current playtime -->
+        <h1>Now Playing: <span id="video-name"></span></h1>
         <h1>Current playtime: <span id="video-time"></span></h1>
       </section>
+
       <section class="video-controls">
-        <!-- Here we create controls using buttons to play pause video
-        as well as use a div to show progress.  -->
+        <!-- Control buttons for play/pause, mute/unmute, volume adjustment, etc. -->
         <button id="play-pause-btn">
           <img
             id="play-pause-img"
@@ -72,6 +64,7 @@
             height="24"
           />
         </button>
+        <!-- These buttons control the functionality for toggling between playing and pausing, muting audio, and controlling volume -->
         <button id="previous-btn">
           <img
             id="previous-img"
@@ -93,6 +86,7 @@
         <div class="progress-bar">
           <span id="progress-bar-fill"></span>
         </div>
+        <!-- These buttons are clearly identifiable with easy-to-understand icons, providing users with a simple and intuitive control experience -->
         <button id="loop-btn">
           <img
             id="loop-img"
@@ -121,7 +115,9 @@
           />
         </button>
       </section>
+
       <section class="timeline">
+        <!-- Interactive timeline and like button -->
         <button id="step-1-btn">step 1</button>
         <button id="like-btn">
           <img
@@ -137,6 +133,7 @@
     </div>
     <footer>
       <p class="description">
+        <!-- Descriptive footer explaining the mindfulness theme -->
         A mindfulness video presented by Bob Joe showcases techniques that
         promote present moment awareness and includes guided meditations aimed
         at enhancing emotional well-being and reducing stress. With serene
@@ -149,4 +146,4 @@
       </p>
     </footer>
   </body>
-</html
+</html>
