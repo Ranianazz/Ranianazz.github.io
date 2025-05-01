@@ -1,63 +1,55 @@
 /* 
- * Kevin Powell
- * Source: https://youtu.be/cCAtD_BAHNw
- */
+*   Kevin Powell
+*   https://youtu.be/cCAtD_BAHNw 
+*/
 
-/* Apply box-sizing: border-box to all elements and pseudo-elements */
-/* This makes padding and border included in the element's total width and height */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Reset default margin, padding, and font settings on all elements */
 * {
   margin: 0;
   padding: 0;
-  font: inherit; /* Prevents font inconsistencies across browsers */
+  font: inherit; /* Get rid of all font sizes and heights */
 }
 
-/* Set base HTML styles */
 html {
-  color-scheme: dark light; /* Use user's preferred color scheme (dark or light) */
-  hanging-punctuation: first last; /* Aligns some punctuation marks better — not supported in all browsers */
+  color-scheme: dark light; /* Default dark */
+  hanging-punctuation: first last; /* Not supported in Chrome */
 }
 
-/* Ensure body always takes at least full viewport height */
 body {
   min-height: 100vh;
 }
 
-/* Make media elements responsive by default */
+/* Media responsive */
 img,
 picture,
 svg,
 video {
   display: block;
-  max-width: 100%; /* Prevents overflow and scales down to fit container */
+  max-width: 100%;
 }
 
-/* Improve heading wrapping: avoids awkward line breaks */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  text-wrap: balance; /* Tries to balance text across lines for headings */
+  text-wrap: balance;
 }
 
-/* Improve paragraph wrapping: reduces widows/orphans */
 p {
-  /* max-width: 75ch; */ /* Optional: limits paragraph width to ~75 characters */
-  text-wrap: pretty; /* Avoids single words left alone on new lines */
+  /* max-width: 75ch; */
+  text-wrap: pretty; /* Prevents orphans on lines */
 }
 
-/* Apply smooth scrolling when jumping to anchor targets (only if user hasn't asked for reduced motion) */
 @media (prefers-reduced-motion: no-preference) {
   :has(:target) {
-    scroll-behavior: smooth; /* Smooth scrolling to anchor targets */
-    scroll-padding-top: 3rem; /* Leaves space at top when scrolling to a section */
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
   }
 }

@@ -1,249 +1,141 @@
-:root {
-  --primary-bg-color: #ffffff;
-  --text-color: #333;
-  --main-bg-color: #706273;
-  --main-text-color: #f2f2f2;
-  --main-btn-bg-color: #a98cac;
-  --nav-btn-bg: #5e486b;
-  --nav-btn-hover: #836787;
-}
-
-/* Font family definitions */
-.barlow-semi-condensed-thin {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.barlow-semi-condensed-regular {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.barlow-semi-condensed-bold {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-body,
-h1,
-p,
-ul {
-  margin: 0;
-  padding: 0;
-}
+/* https://colorhunt.co/palette/1a120b3c2a21d5cea3e5e5cb */
 
 body {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  background-color: var(--primary-bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  background-color: #060606; /* Fallback color */
+  background-image: url("mindfulness.jpg");
   display: flex;
   flex-direction: column;
+  gap: 4rem;
+  /* text-align: center; */
+  margin: auto;
+  max-width: 9000px;
+  justify-content: center;
   align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
+  font-style: normal;
+  color: #100f10;
+  /* color: #3c2a21; */
+  font-size: 1.1rem;
+  padding-top: 45px;
 }
 
-/* Create a container for the main content */
-.container {
-  max-width: 1000px;
-  width: 100%;
+.outer {
+  width: 95%;
+  border: 5px solid #dde3e168;
+  max-width: 9000px;
+  min-height: 200px;
   padding: 20px;
-  box-sizing: border-box;
-}
-
-/* Header styling */
-.main-header {
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
-  padding: 15px 0;
-  width: 100%;
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.site-title {
-  font-weight: 600;
-  font-size: 2.2rem;
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-
-/* Video Art heading */
-.video-art-heading {
-  font-weight: 400;
-  font-size: 5rem;
-  text-align: center;
-  margin: 30px 0;
-  color: var(--text-color);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Navigation styling */
-.main-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-button {
-  text-decoration: none;
-  color: var(--main-text-color);
-  background-color: var(--nav-btn-bg);
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  letter-spacing: 0.5px;
-}
-
-.nav-button:hover {
-  background-color: var(--nav-btn-hover);
-  transform: translateY(-2px);
-}
-
-/* Media player styling */
-.media-player {
-  width: 100%;
-  margin: 20px 0;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.media-player video {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16/9;
-}
-
-.custom-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
-  padding: 10px 15px;
-  background-color: var(--main-btn-bg-color);
+
+  /* border-radius: 5px; */
+  /* flex-wrap: wrap; */
 }
 
-.custom-controls button {
-  background-color: transparent;
-  color: var(--main-text-color);
-  border: none;
-  padding: 8px;
+img {
   cursor: pointer;
-  font-size: 16px;
+}
+
+.video-container {
   display: flex;
+  gap: 1rem;
+  /* flex-wrap: wrap; */
+}
+
+.video-container > video {
+  /* flex: 1; */
+  width: 80%;
+  height: 450px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* width: 200px; */
+  flex: 1;
+}
+
+/* .video-list button {
+  border-radius: 5px;
+} */
+
+/* .video-list button:hover {
+  scale: 0.97;
+} */
+.video-controls,
+.timeline {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  /* align-items: center; */
+}
+
+.video-controls button {
+  width: 56px;
+  height: 40px;
+  background-color: #a8b49c;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  font-weight: 500;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+/* .video-controls button:hover {
+  scale: 0.9;
+} */
+
+.video-controls button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.timeline button {
+  padding: 10px 20px;
+  background-color: #a8b49c;
+  border: none;
+  color: #171313;
+  border-radius: 5px;
+}
+
+.video-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-title h1 {
+  font-size: 1.2rem;
 }
 
 .progress-bar {
-  flex-grow: 1;
-  height: 6px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-  margin: 0 15px;
+  width: 100%;
+  height: 10px;
+  background-color: #e5e5cb68;
+  margin-top: 10px;
   overflow: hidden;
 }
 
 .progress-bar span {
   display: block;
   height: 100%;
-  background-color: white;
+  background-color: rgb(37, 175, 80);
   width: 0;
-  transition: width 0.1s linear;
+  transition: width 0.3s ease;
 }
-
-/* Content section styling */
-section {
-  padding: 20px 0;
-}
-
-section h2 {
-  font-weight: 500;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-section p {
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* Footer styling */
-footer {
-  background-color: var(--main-bg-color);
-  color: var(--main-text-color);
+h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-weight: 700; /* Bold for emphasis */
   text-align: center;
-  padding: 20px 0;
-  width: 100%;
-  margin-top: 40px;
-}
-
-footer p {
-  margin-bottom: 10px;
-}
-
-footer a {
-  color: var(--main-text-color);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .site-title {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .video-art-heading {
-    font-size: 3.5rem;
-  }
-
-  .main-nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
-
-  .video-art-heading {
-    font-size: 2.5rem;
-    margin: 20px 0;
-  }
-
-  .nav-button {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-
-  .custom-controls {
-    padding: 8px 10px;
-  }
+  margin-bottom: 1rem;
 }

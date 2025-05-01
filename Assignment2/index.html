@@ -1,124 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Sets the character encoding and responsive layout -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>RN Media Player</title>
-
-    <!-- Importing custom font from Google Fonts -->
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Grotesk&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Linking CSS files for resetting default styles and custom styles -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-
-    <!-- Linking JavaScript file to enable media player interaction -->
     <script src="script.js" defer></script>
   </head>
-
+  <h1>Minfulness Media Player</h1>
   <body>
-    <!-- Site header with navigation -->
-    <header class="main-header">
-      <div class="header-content">
-        <!-- Website title -->
-        <h1 class="site-title">RN Media Player</h1>
-
-        <!-- Main site navigation -->
-        <nav class="main-nav">
-          <ul>
-            <!-- Navigation links -->
-            <li><a href="home.html" class="nav-button">About</a></li>
-            <li><a href="videos.html" class="nav-button">Videos</a></li>
-            <li><a href="music.html" class="nav-button">Music</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <!-- Heading for the main content -->
-    <h1 class="video-art-heading">Video Art</h1>
-
-    <!-- Main content container -->
-    <main class="container">
-      <!-- Custom video player section -->
-      <div class="media-player">
-        <!-- HTML5 video element -->
-        <video id="custom-video-player-1">
-          <source
-            src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
-            type="video/mp4"
-          />
+    <!-- as always we have the outer box that acts as a container for video  -->
+    <div class="outer">
+      <!-- We divide the content of the box into three sections
+      1. video-container = it contains the videoplayer as well as playlist
+      2. video-title = it contains meta information about video currently being played
+      3. video-controls = it gives options for users to control the video such as 
+         play, pause, make it fullscreen etc.  -->
+      <section class="video-container">
+        <!-- we further divide video-container into two sections
+        1. video player
+        2. video-list: a section containing clickable images of videos 
+           that can be played.  -->
+        <video id="my-video" controls>
+          <source src="stardust.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
 
-        <!-- Custom controls overlay -->
-        <div class="custom-controls">
-          <!-- Play/pause button -->
-          <button id="play-pause-btn-1" class="control-btn">
-            <img
-              id="play-pause-img-1"
-              src="play.png"
-              alt="Play Button"
-              width="24"
-              height="24"
-            />
+        <section class="video-list">
+          <!-- We use buttons, whenever user clicks on them, the correspoding 
+          video will be played  -->
+          <button id="first-video-btn">
+            <img id="first-video-img" src="zenscape.png" alt="Zenscape" />
           </button>
-
-          <!-- Progress bar for video playback -->
-          <div class="progress-bar">
-            <span id="progress-bar-fill-1"></span>
-          </div>
-
-          <!-- Fullscreen button -->
-          <button id="fullscreen-btn-1" class="control-btn">
-            <img
-              src="full-screen.png"
-              alt="Fullscreen"
-              width="24"
-              height="24"
-            />
+          <button id="second-video-btn">
+            <img id="second-video-img" src="stardust.png" alt="stardust" />
           </button>
-        </div>
-      </div>
-
-      <!-- Descriptive section explaining design decisions -->
-      <section>
-        <h2>Art video</h2>
-        <p>
-          <!-- Explanation of UI/UX design and technical implementation -->
-          This design was created to complement the art video. I chose to keep
-          the video in its original location because the positioning worked well
-          visually. To maintain a cohesive UI, I used a purple monotone that
-          highlights the media player's colour and ties the entire website
-          together. I implemented a pause button using a standard button element
-          and connected it to a togglePlayPause function. For full-screen
-          functionality, I used a full-screen icon and linked it to the
-          updateFullscreen function. Initially, the icon was broken due to a
-          rendering issue, so I used Boolean logic to prevent it from breaking
-          again. I repositioned the control buttons to the top right corner and
-          built a navigation bar for better accessibility. The buttons now
-          include hover effects that change their colour and link to new pages.
-          This interactive behaviour was achieved using HTML and CSS directly
-          through source coding. The layout is responsive across different
-          screen sizes, and I ensured basic accessibility by using semantic
-          elements and making sure the buttons are keyboard-navigable and screen
-          reader friendly.
-        </p>
+        </section>
       </section>
-    </main>
-
-    <!-- Footer with icon attributions -->
+      <section class="video-title">
+        <!-- in this section, we display the name of the video and current playtime -->
+        <h1>Now Playing: <span id="video-name"></span></h1>
+        <h1>Current playtime: <span id="video-time"></span></h1>
+      </section>
+      <section class="video-controls">
+        <!-- Here we create controls using buttons to play pause video
+        as well as use a div to show progress.  -->
+        <button id="play-pause-btn">
+          <img
+            id="play-pause-img"
+            src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+            alt="Play Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <button id="mute-unmute-btn">
+          <img
+            id="mute-unmute-img"
+            src="https://img.icons8.com/ios-glyphs/30/no-audio--v1.png"
+            alt="Mute Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <button id="previous-btn">
+          <img
+            id="previous-img"
+            src="https://img.icons8.com/ios-glyphs/30/skip-to-start--v2.png"
+            alt="Previous Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <button id="next-btn">
+          <img
+            id="next-img"
+            src="https://img.icons8.com/ios-glyphs/30/end--v2.png"
+            alt="Next Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <div class="progress-bar">
+          <span id="progress-bar-fill"></span>
+        </div>
+        <button id="loop-btn">
+          <img
+            id="loop-img"
+            src="https://img.icons8.com/ios-glyphs/30/repeat.png"
+            alt="Loop Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <button id="decrease-volume-btn">
+          <img
+            id="decrease-volume-img"
+            src="https://img.icons8.com/ios-glyphs/30/low-volume.png"
+            alt="Decrease volume Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <button id="increase-volume-btn">
+          <img
+            id="increase-volume-img"
+            src="https://img.icons8.com/ios-glyphs/30/high-volume--v1.png"
+            alt="Increase volume Button"
+            width="24"
+            height="24"
+          />
+        </button>
+      </section>
+      <section class="timeline">
+        <button id="step-1-btn">step 1</button>
+        <button id="like-btn">
+          <img
+            id="like-img"
+            src="https://img.icons8.com/ios-filled/50/facebook-like.png"
+            alt="Like Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <span>Total likes: <span id="likes"></span></span>
+      </section>
+    </div>
     <footer>
-      <p>&copy; 2024 Media Player Website. All rights reserved.</p>
-      <a href="https://icons8.com/icon/59862/play">Play</a> icon by
-      <a href="https://icons8.com">Icons8</a>
-      <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
+      Icons by
       <a href="https://icons8.com">Icons8</a>
     </footer>
   </body>
