@@ -36,7 +36,6 @@ const myVideo = document.querySelector("#my-video");
 const videoName = document.querySelector("#video-name");
 const videoTime = document.querySelector("#video-time");
 const progressBar = document.querySelector("#progress-bar-fill");
-// myVideo.removeAttribute("controls");
 
 // Event listener to check time update on video to update the progress bar
 myVideo.addEventListener("timeupdate", updateProgressBar);
@@ -48,45 +47,20 @@ myVideo.addEventListener("volumechange", updateVolume);
 myVideo.addEventListener("ended", replay);
 
 const firstVideoButton = document.querySelector("#first-video-btn");
-
 // Event listener to play the first video
 firstVideoButton.addEventListener("click", function playIt() {
   myVideo.pause();
-  playVideo(0);
+  playVideo(0); // Play first video
 });
-
-function updateVolume() {
-  const volume = myVideo.volume;
-  console.log("Volume changed:", volume);
-}
-
-//volume values range from 0 to 1 with an increment of 0.1
-function increaseVolume() {
-  if (myVideo.volume < 0.9) {
-    myVideo.volume += 0.1;
-  }
-}
-
-//since you do not want the value to go to negative the check is not at 0 but 0.11
-function decreaseVolume() {
-  if (myVideo.volume > 0.11) {
-    myVideo.volume -= 0.1;
-  }
-}
-
-//if the timestamp for step 1 is at 16.41s then it will set the currenttime to that
-function gotoStep1() {
-  myVideo.currentTime = 16.41;
-}
 
 const secondVideoButton = document.querySelector("#second-video-btn");
+// Event listener to play the second video
 secondVideoButton.addEventListener("click", function playIt() {
   myVideo.pause();
-  playVideo(1);
+  playVideo(1); // Play second video
 });
 
-//video will be played if it is currently paused or ended
-//otherwise the same function will pause the video
+// Toggle play/pause functionality
 function togglePlay() {
   if (myVideo.paused || myVideo.ended) {
     myVideo.play();
@@ -97,8 +71,7 @@ function togglePlay() {
   }
 }
 
-//to mute the video we check if it is already muted or not, if not
-//mute it or unmute it.
+// Toggle mute/unmute functionality
 function toggleAudio() {
   if (myVideo.muted) {
     myVideo.muted = false;
@@ -109,8 +82,7 @@ function toggleAudio() {
   }
 }
 
-//depending on the number, it will fetch the right video and its name
-//from the VideoList array, see at the top.
+// Play video based on selected index (0 for Zenscape, 1 for Stardust)
 function playVideo(no) {
   myVideo.pause();
   myVideo.src = videoList[no].link;
@@ -119,53 +91,65 @@ function playVideo(no) {
   myVideo.play();
 }
 
-//to loop or replay the video, we set and check the value of loop
-//loop is a boolean variable, originally false, but can be set to true
-// by clicking the loop button
-
+// Replay video if loop is enabled
 function replay() {
-  console.log("loop is", loop);
   if (loop) {
     myVideo.currentTime = 0;
     myVideo.play();
   }
 }
 
-//this function will set the value of loop to true or false
+// Toggle loop functionality
 function loopVideo() {
-  if (loop) {
-    loop = false;
-    loopButton.style.backgroundColor = "#d5cea3";
-  } else {
-    loop = true;
-    loopButton.style.backgroundColor = "#7b775e";
-  }
-  console.log("loop is", loop);
+  loop = !loop;
+  loopButton.style.backgroundColor = loop ? "#7b775e" : "#d5cea3";
 }
 
-//we increase the width of the progress bar depending on the percentage
-// how much video is played in comparison to how much is left or its duration.
+// Increase video volume
+function increaseVolume() {
+  if (myVideo.volume < 0.9) {
+    myVideo.volume += 0.1;
+  }
+}
+
+// Decrease video volume
+function decreaseVolume() {
+  if (myVideo.volume > 0.11) {
+    myVideo.volume -= 0.1;
+  }
+}
+
+// Skip to a specific timestamp (step 1)
+function gotoStep1() {
+  myVideo.currentTime = 16.41;
+}
+
+// Update progress bar based on video time
 function updateProgressBar() {
   videoTime.textContent = myVideo.currentTime.toFixed(2);
   const value = (myVideo.currentTime / myVideo.duration) * 100;
   progressBar.style.width = value + "%";
 }
 
-// We use this function to toggle in and out of full screen
+// Update volume display
+function updateVolume() {
+  const volume = myVideo.volume;
+  console.log("Volume changed:", volume);
+}
+
+// Toggle fullscreen functionality
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
-    // If no element is in fullscreen, request fullscreen on the video player
     myVideo.requestFullscreen();
   } else {
-    // Otherwise, exit fullscreen
     document.exitFullscreen();
   }
 }
 
-// Event listener for double-click on the video to toggle fullscreen
+// Event listener for fullscreen double-click
 myVideo.addEventListener("dblclick", toggleFullscreen);
 
-// Event listener for fullscreen change event to update UI
+// Event listener for fullscreen change event
 document.addEventListener("fullscreenchange", function () {
   if (document.fullscreenElement === myVideo) {
     console.log("Entered fullscreen");
@@ -174,48 +158,41 @@ document.addEventListener("fullscreenchange", function () {
   }
 });
 
-// The following code allows moving to previous and next audio or video
+// Navigation for previous and next video
 const prevButton = document.querySelector("#previous-btn");
-console.log(prevButton);
 prevButton.addEventListener("click", prevTrack);
 
 const nextButton = document.querySelector("#next-btn");
-console.log(nextButton);
 nextButton.addEventListener("click", nextTrack);
 
 let currentIndex = 0;
 
+// Play previous track
 function prevTrack() {
-  console.log("previous track loading");
   currentIndex = (currentIndex - 1 + videoList.length) % videoList.length;
-  console.log(currentIndex);
   playVideoAtIndex(currentIndex);
 }
 
+// Play next track
 function nextTrack() {
-  console.log("next track loading");
   currentIndex = (currentIndex + 1) % videoList.length;
-  console.log(currentIndex);
   playVideoAtIndex(currentIndex);
 }
 
 // Function to play video at a specific index
 function playVideoAtIndex(index) {
-  myVideo.pause(); // Pause the video before changing source
-  console.log(videoList[index].link);
+  myVideo.pause();
   myVideo.src = videoList[index].link;
-  myVideo.load(); // Load the new source
-  myVideo.play(); // Play the video
+  myVideo.load();
+  myVideo.play();
 }
 
-//-----------------------------------------------------------------
-
-// The following code allows users to like the video and display total likes
+// Like functionality
 let likeCount = 0;
 
 const likeButton = document.querySelector("#like-btn");
-console.log(likeButton);
 likeButton.addEventListener("click", addLikes);
+
 const likes = document.querySelector("#likes");
 likes.textContent = likeCount;
 
@@ -223,4 +200,3 @@ function addLikes() {
   likeCount++;
   likes.textContent = likeCount;
 }
-//-----------------------------------------------------------------

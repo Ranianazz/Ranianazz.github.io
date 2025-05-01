@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Basic metadata setup including character set and responsive scaling -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Title displayed on the browser tab -->
-    <title>Mindfulness Media Player</title>
-
-    <!-- Import Google Fonts to enhance visual appeal -->
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Grotesk&display=swap"
       rel="stylesheet"
     />
-
-    <!-- External CSS files for style reset and custom styling -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-
-    <!-- JavaScript file to add interactive functionality -->
     <script src="script.js" defer></script>
   </head>
+  <h1>Minfulness Media Player</h1>
 
   <body>
-    <!-- Main heading of the app.
-         NOTE: While functional here, best practice is to place this inside the <body>. -->
-    <h1>Mindfulness Media Player</h1>
-
-    <!-- The outer container that holds all video-related content -->
+    <!-- as always we have the outer box that acts as a container for video  -->
     <div class="outer">
-      <!-- Three main sections inside this container:
-           1. video-container - Holds the video player and video list.
-           2. video-title - Shows metadata like name and playtime.
-           3. video-controls - Contains all control buttons for the player. -->
+      <!-- We divide the content of the box into three sections
+      1. video-container = it contains the videoplayer as well as playlist
+      2. video-title = it contains meta information about video currently being played
+      3. video-controls = it gives options for users to control the video such as 
+         play, pause, make it fullscreen etc.  -->
       <section class="video-container">
-        <!-- Video player with controls enabled.
-             Displays a fallback message if the video tag isn't supported by the browser. -->
+        <!-- we further divide video-container into two sections
+        1. video player
+        2. video-list: a section containing clickable images of videos 
+           that can be played.  -->
         <video id="my-video" controls>
           <source src="stardust.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
-        <!-- Video thumbnails for selection.
-             Each button loads a specific video into the player. -->
         <section class="video-list">
+          <!-- We use buttons, whenever user clicks on them, the correspoding 
+          video will be played  -->
           <button id="first-video-btn">
             <img id="first-video-img" src="zenscape.png" alt="Zenscape" />
           </button>
           <button id="second-video-btn">
-            <img id="second-video-img" src="stardust.png" alt="Stardust" />
+            <img id="second-video-img" src="stardust.png" alt="stardust" />
           </button>
         </section>
       </section>
-
-      <!-- Metadata section that updates dynamically with video info -->
       <section class="video-title">
-        <!-- Displays the name of the currently playing video -->
+        <!-- in this section, we display the name of the video and current playtime -->
         <h1>Now Playing: <span id="video-name"></span></h1>
 
-        <!-- Shows the current timestamp of video playback -->
         <h1>Current playtime: <span id="video-time"></span></h1>
       </section>
-
-      <!-- Section with interactive video controls:
-           play/pause, mute/unmute, next/prev, volume, loop, progress -->
       <section class="video-controls">
-        <!-- Toggles play and pause -->
+        <!-- Here we create controls using buttons to play pause video
+        as well as use a div to show progress.  -->
         <button id="play-pause-btn">
           <img
             id="play-pause-img"
@@ -77,8 +63,6 @@
             height="24"
           />
         </button>
-
-        <!-- Mutes or unmutes video audio -->
         <button id="mute-unmute-btn">
           <img
             id="mute-unmute-img"
@@ -88,8 +72,6 @@
             height="24"
           />
         </button>
-
-        <!-- Skips to previous video in the playlist -->
         <button id="previous-btn">
           <img
             id="previous-img"
@@ -99,8 +81,6 @@
             height="24"
           />
         </button>
-
-        <!-- Skips to next video in the playlist -->
         <button id="next-btn">
           <img
             id="next-img"
@@ -110,13 +90,9 @@
             height="24"
           />
         </button>
-
-        <!-- Displays video progress based on time played -->
         <div class="progress-bar">
           <span id="progress-bar-fill"></span>
         </div>
-
-        <!-- Loops the video from start after it ends -->
         <button id="loop-btn">
           <img
             id="loop-img"
@@ -126,8 +102,6 @@
             height="24"
           />
         </button>
-
-        <!-- Decreases the volume of the video in steps -->
         <button id="decrease-volume-btn">
           <img
             id="decrease-volume-img"
@@ -137,8 +111,6 @@
             height="24"
           />
         </button>
-
-        <!-- Increases the volume of the video in steps -->
         <button id="increase-volume-btn">
           <img
             id="increase-volume-img"
@@ -149,13 +121,8 @@
           />
         </button>
       </section>
-
-      <!-- Timeline control section with a custom step and like counter -->
       <section class="timeline">
-        <!-- Custom-defined step in the video (e.g., guided meditation start) -->
         <button id="step-1-btn">step 1</button>
-
-        <!-- Like button that increments like counter visually -->
         <button id="like-btn">
           <img
             id="like-img"
@@ -165,13 +132,9 @@
             height="24"
           />
         </button>
-
-        <!-- Dynamic like counter display -->
         <span>Total likes: <span id="likes"></span></span>
       </section>
     </div>
-
-    <!-- Footer containing description of content and icon credits -->
     <footer>
       <p class="description">
         A mindfulness video presented by Bob Joe showcases techniques that
@@ -186,4 +149,4 @@
       </p>
     </footer>
   </body>
-</html>
+</html
