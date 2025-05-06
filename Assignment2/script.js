@@ -103,7 +103,7 @@ function replay() {
 // Function to toggle the loop functionality
 function loopVideo() {
   loop = !loop; // Toggle the loop state
-  loopButton.style.backgroundColor = loop ? "#7b775e" : "#d5cea3"; // Change loop button background color to indicate the state
+  loopButton.style.backgroundColor = loop ? "#7b775e" : "#d5cea3"; // Change loop button background colour to indicate the state
 }
 
 // Function to increase the volume by 0.1 units, up to a maximum of 0.9
