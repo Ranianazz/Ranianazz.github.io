@@ -1,4 +1,4 @@
-/* Color palette inspired by nature: warm browns, soft creams, and earthy greens 
+/* The colour palette inspired by nature: warm browns, soft creams, and earthy tones to 
    evoke a sense of calm and grounding — ideal for a mindfulness experience. */
 
 /* === Body Setup === */
@@ -12,7 +12,7 @@ body {
   max-width: 9000px;
   justify-content: center;
   align-items: center;
-  font-family: "Space Grotesk", sans-serif; /* Modern, humanistic typeface for calm readability */
+  font-family: "Space Grotesk", sans-serif; /* Modern, humanistic typography for calm readability */
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -59,7 +59,7 @@ img {
   flex: 1;
 }
 
-/* === Button Section: Rounded shapes and muted greens reduce stress and encourage calm interaction === */
+/* === Button Section: Rounded shapes and Neutral tones to reduce stress and encourage calm interaction === */
 .video-controls,
 .timeline {
   display: flex;
@@ -67,11 +67,11 @@ img {
   flex-wrap: nowrap;
 }
 
-/* === All control buttons have muted earthy colors and rounded edges to feel organic and inviting === */
+/* === All control buttons have muted earthy colours and rounded edges to feel organic and inviting === */
 .video-controls button {
   width: 56px;
   height: 40px;
-  background-color: #e8e1c6; /* Muted sage green evokes peace and connection to nature */
+  background-color: #e8e1c6; /* Neutral tones to seamlessly blend in with the background */
   border: none;
   padding: 0;
   cursor: pointer;
@@ -122,7 +122,7 @@ img {
   font-size: 1.2rem;
 }
 
-/* === Progress bar styled in soft light color with a neutral earthy tone === */
+/* === Progress bar styled in soft light colour with a neutral earthy tone === */
 .progress-bar {
   width: 100%;
   height: 10px;
@@ -148,7 +148,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* === Descriptive Footer — light color, generous spacing for reflection and clarity === */
+/* === Descriptive Footer — light colour, generous spacing for reflection and clarity === */
 .description {
   max-width: 800px;
   margin: 0 auto;
