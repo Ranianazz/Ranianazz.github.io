@@ -71,7 +71,7 @@ img {
 .video-controls button {
   width: 56px;
   height: 40px;
-  background-color: #e8e1c6; /* Neutral tones to seamlessly blend in with the background */
+  background-color: #e8dec6; /* Neutral tones to seamlessly blend in with the background */
   border: none;
   padding: 0;
   cursor: pointer;
@@ -163,4 +163,10 @@ h1 {
     108,
     0
   ); /* Transparent for gentle contrast */
+}
+.outer {
+  background: rgba(245, 242, 232, 0.2); /* Earthy cream tint */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
 }

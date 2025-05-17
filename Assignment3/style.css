@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game {
+  position: relative;
+  width: 1500px;
+  height: 600px;
+  background: #fdfcfc;
+  overflow: hidden;
+  margin: 20px auto;
+  border: 3px solid #333;
+}
+
+#background {
+  position: absolute;
+  width: 3000px; /* Double the game width for seamless scrolling */
+  height: 600px;
+  animation: scrollBg 15s linear infinite;
+}
+
+@keyframes scrollBg {
+  from {
+    left: 0;
+  }
+  to {
+    left: -1500px; /* Scroll by game width */
+  }
+}
+
+#player {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  width: 120px;
+  transition: bottom 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+#rock {
+  position: absolute;
+  bottom: 40px;
+  right: -150px;
+  width: 100px;
+  animation: moveRock 2.5s linear infinite;
+}
+
+@keyframes moveRock {
+  from {
+    right: -150px;
+  }
+  to {
+    right: 1600px; /* Move across entire game width + extra */
+  }
+}
+
+#gameOver {
+  display: none;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 40%;
+  font-size: 4rem;
+  color: red;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+#jumpBtn {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#jumpBtn:hover {
+  background-color: #ffaa00;
+  transform: scale(1.05);
+}
+
+#replayBtn {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#replayBtn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
