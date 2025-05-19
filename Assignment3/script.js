@@ -4,7 +4,9 @@ const gameOver = document.getElementById("gameOver");
 const jumpBtn = document.getElementById("jumpBtn");
 const replayBtn = document.getElementById("replayBtn");
 const background = document.getElementById("background");
+const playBtn = document.getElementById("playBtn");
 
+let gameStarted = false;
 let jumping = false;
 let gameRunning = true;
 let jumpAnimation;
