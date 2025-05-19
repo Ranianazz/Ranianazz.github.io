@@ -8,6 +8,7 @@ const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
 const scoreDisplay = document.getElementById("score");
 
+// Game state variables
 let gameStarted = false;
 let jumping = false;
 let gameRunning = false;
@@ -15,15 +16,24 @@ let jumpAnimation;
 let score = 0;
 let rockPassed = false;
 
+// Difficulty variables
+let baseSpeed = 2.5; // Initial rock animation duration (seconds)
+let currentSpeed = baseSpeed;
+let speedIncrease = 0.1; // Speed increase per successful jump (seconds)
+let minSpeed = 1.0; // Maximum difficulty (minimum duration)
+let backgroundSpeed = 15; // Background animation duration
+
 function startGame() {
   gameStarted = true;
   gameRunning = true;
   startScreen.style.display = "none";
   score = 0;
   scoreDisplay.textContent = "Score: 0";
+  currentSpeed = baseSpeed;
 
   // Start animations
   background.style.animationPlayState = "running";
+  rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
   rock.style.animationPlayState = "running";
 }
 
@@ -63,16 +73,17 @@ function jump() {
   }
 }
 
-// Event listeners
-document.addEventListener("keydown", (e) => {
-  if (e.code === "Space") {
-    e.preventDefault();
-    jump();
-  }
-});
+function updateRockSpeed() {
+  // Calculate new speed and update animation
+  rock.style.animation = "none";
+  rock.offsetHeight; // Trigger reflow
+  rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
+  rock.style.animationPlayState = "running";
 
-jumpBtn.addEventListener("click", jump);
-startBtn.addEventListener("click", startGame);
+  // Also increase background speed slightly for visual feedback
+  backgroundSpeed = Math.max(10, backgroundSpeed - 0.5);
+  background.style.animation = `scrollBg ${backgroundSpeed}s linear infinite`;
+}
 
 function checkCollision() {
   const playerRect = player.getBoundingClientRect();
@@ -95,22 +106,18 @@ function updateScore() {
     rockPassed = true;
     score++;
     scoreDisplay.textContent = `Score: ${score}`;
+
+    // Increase speed after each successful jump
+    if (currentSpeed > minSpeed) {
+      currentSpeed -= speedIncrease;
+      updateRockSpeed();
+    }
   }
 
   // Reset the flag when rock is back to the right of the player
   if (rockRect.left > playerRect.right) {
     rockPassed = false;
   }
-}
-
-function gameLoop() {
-  if (gameRunning) {
-    if (checkCollision()) {
-      endGame();
-    }
-    updateScore();
-  }
-  requestAnimationFrame(gameLoop);
 }
 
 function endGame() {
@@ -126,16 +133,20 @@ function resetGame() {
   player.style.bottom = "50px";
   jumping = false;
 
+  // Reset difficulty
+  currentSpeed = baseSpeed;
+  backgroundSpeed = 15;
+
   // Reset rock
   rock.style.animation = "none";
   rock.offsetHeight;
-  rock.style.animation = "moveRock 2.5s linear infinite";
+  rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
   rock.style.animationPlayState = "running";
 
   // Reset background
   background.style.animation = "none";
   background.offsetHeight;
-  background.style.animation = "scrollBg 15s linear infinite";
+  background.style.animation = `scrollBg ${backgroundSpeed}s linear infinite`;
   background.style.animationPlayState = "running";
 
   // Reset game state
@@ -146,9 +157,33 @@ function resetGame() {
   rockPassed = false;
 }
 
+// Event listeners
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    e.preventDefault();
+    jump();
+  }
+});
+
+jumpBtn.addEventListener("click", jump);
+startBtn.addEventListener("click", startGame);
 replayBtn.addEventListener("click", resetGame);
 
 // Initialize game with animations paused
+background.style.animation = `scrollBg ${backgroundSpeed}s linear infinite`;
 background.style.animationPlayState = "paused";
+rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
 rock.style.animationPlayState = "paused";
+
+// Start game loop
+function gameLoop() {
+  if (gameRunning) {
+    if (checkCollision()) {
+      endGame();
+    }
+    updateScore();
+  }
+  requestAnimationFrame(gameLoop);
+}
+
 gameLoop();

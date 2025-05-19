@@ -162,3 +162,12 @@ body {
   border-radius: 10px;
   z-index: 5;
 }
+/* Add this new animation at the bottom of your CSS file */
+@keyframes moveRockFast {
+  from {
+    right: -150px;
+  }
+  to {
+    right: 1600px;
+  }
+}
