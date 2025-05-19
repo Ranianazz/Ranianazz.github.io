@@ -99,7 +99,7 @@ body {
 #startBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
-  background-color: #ff6600;
+  background-color: #ff00c3;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -108,7 +108,7 @@ body {
 }
 
 #startBtn:hover {
-  background-color: #ff8800;
+  background-color: #f973da;
   transform: scale(1.05);
 }
 
@@ -123,7 +123,7 @@ body {
 #jumpBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
-  background-color: #ffcc00;
+  background-color: #f12fa0;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -131,14 +131,14 @@ body {
 }
 
 #jumpBtn:hover {
-  background-color: #ffaa00;
+  background-color: #f964bb;
   transform: scale(1.05);
 }
 
 #replayBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
-  background-color: #4caf50;
+  background-color: #2ac59c;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -146,6 +146,6 @@ body {
 }
 
 #replayBtn:hover {
-  background-color: #45a049;
+  background-color: #6bcdb3;
   transform: scale(1.05);
 }
