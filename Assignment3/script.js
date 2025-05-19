@@ -4,12 +4,23 @@ const gameOver = document.getElementById("gameOver");
 const jumpBtn = document.getElementById("jumpBtn");
 const replayBtn = document.getElementById("replayBtn");
 const background = document.getElementById("background");
-const playBtn = document.getElementById("playBtn");
+const startBtn = document.getElementById("startBtn");
+const startScreen = document.getElementById("startScreen");
 
 let gameStarted = false;
 let jumping = false;
-let gameRunning = true;
+let gameRunning = false;
 let jumpAnimation;
+
+function startGame() {
+  gameStarted = true;
+  gameRunning = true;
+  startScreen.style.display = "none";
+
+  // Start animations
+  background.style.animationPlayState = "running";
+  rock.style.animationPlayState = "running";
+}
 
 function jump() {
   if (!jumping && gameRunning) {
@@ -56,6 +67,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 jumpBtn.addEventListener("click", jump);
+startBtn.addEventListener("click", startGame);
 
 function checkCollision() {
   const playerRect = player.getBoundingClientRect();
@@ -93,11 +105,13 @@ function resetGame() {
   rock.style.animation = "none";
   rock.offsetHeight;
   rock.style.animation = "moveRock 2.5s linear infinite";
+  rock.style.animationPlayState = "running";
 
   // Reset background
   background.style.animation = "none";
   background.offsetHeight;
   background.style.animation = "scrollBg 15s linear infinite";
+  background.style.animationPlayState = "running";
 
   // Reset game state
   gameOver.style.display = "none";
@@ -105,4 +119,8 @@ function resetGame() {
 }
 
 replayBtn.addEventListener("click", resetGame);
+
+// Initialize game with animations paused
+background.style.animationPlayState = "paused";
+rock.style.animationPlayState = "paused";
 gameLoop();
