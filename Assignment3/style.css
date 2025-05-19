@@ -149,3 +149,16 @@ body {
   background-color: #6bcdb3;
   transform: scale(1.05);
 }
+/* Previous CSS remains the same, just add this at the bottom */
+
+#score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 5;
+}

@@ -6,16 +6,21 @@ const replayBtn = document.getElementById("replayBtn");
 const background = document.getElementById("background");
 const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
+const scoreDisplay = document.getElementById("score");
 
 let gameStarted = false;
 let jumping = false;
 let gameRunning = false;
 let jumpAnimation;
+let score = 0;
+let rockPassed = false;
 
 function startGame() {
   gameStarted = true;
   gameRunning = true;
   startScreen.style.display = "none";
+  score = 0;
+  scoreDisplay.textContent = "Score: 0";
 
   // Start animations
   background.style.animationPlayState = "running";
@@ -81,9 +86,29 @@ function checkCollision() {
   );
 }
 
+function updateScore() {
+  const playerRect = player.getBoundingClientRect();
+  const rockRect = rock.getBoundingClientRect();
+
+  // Check if rock has passed the player without collision
+  if (rockRect.right < playerRect.left && !rockPassed) {
+    rockPassed = true;
+    score++;
+    scoreDisplay.textContent = `Score: ${score}`;
+  }
+
+  // Reset the flag when rock is back to the right of the player
+  if (rockRect.left > playerRect.right) {
+    rockPassed = false;
+  }
+}
+
 function gameLoop() {
-  if (gameRunning && checkCollision()) {
-    endGame();
+  if (gameRunning) {
+    if (checkCollision()) {
+      endGame();
+    }
+    updateScore();
   }
   requestAnimationFrame(gameLoop);
 }
@@ -116,6 +141,9 @@ function resetGame() {
   // Reset game state
   gameOver.style.display = "none";
   gameRunning = true;
+  score = 0;
+  scoreDisplay.textContent = "Score: 0";
+  rockPassed = false;
 }
 
 replayBtn.addEventListener("click", resetGame);
