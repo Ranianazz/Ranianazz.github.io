@@ -1,29 +1,53 @@
 <!DOCTYPE html>
+<!-- Declares the document type and version of HTML (HTML5) -->
 <html lang="en">
+  <!-- Root element with language set to English -->
   <head>
+    <!-- Document metadata container -->
     <meta charset="UTF-8" />
+    <!-- Character encoding set to UTF-8 for proper text rendering -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ensures proper responsive behavior on mobile devices -->
     <title>Marshmallow Jump</title>
+    <!-- Title shown in browser tab -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Links to external CSS stylesheet -->
   </head>
+
   <body>
+    <!-- Main content of the webpage -->
     <div id="game">
+      <!-- Main game container -->
+
+      <!-- Game background image -->
       <img id="background" src="scrollimage.png" alt="Background" />
+
+      <!-- Player character (marshmallow) -->
       <img id="player" src="marshmellow.png" alt="Player" />
+
+      <!-- Obstacle that player must jump over -->
       <img id="rock" src="hotcoco.png" alt="Obstacle" />
+
+      <!-- Score display element -->
       <div id="score">Score: 0</div>
+
+      <!-- Game over message (initially hidden) -->
       <div id="gameOver">Game Over</div>
+
+      <!-- Start screen with title and start button -->
       <div id="startScreen">
         <h1>Marshmallow Jump</h1>
         <button id="startBtn">Start Game</button>
       </div>
     </div>
 
-    <!-- Restart Button is on the Game Over screen -->
+    <!-- Game controls container -->
+    <!-- Restart Button is on the Game Over screen (initially hidden) -->
     <div id="controls">
       <button id="replayBtn" style="display: none">Restart</button>
     </div>
 
+    <!-- Link to external JavaScript file containing game logic -->
     <script src="script.js"></script>
   </body>
 </html>

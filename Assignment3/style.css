@@ -1,129 +1,143 @@
+/* ===== GLOBAL RESET ===== */
+/* Reset default browser styles for consistent rendering */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  box-sizing: border-box; /* Include padding/border in element dimensions */
 }
 
+/* ===== BASE STYLES ===== */
 body {
-  overflow: hidden;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  overflow: hidden; /* Prevent scrollbars from appearing */
+  font-family: sans-serif; /* Default clean font */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
 }
 
+/* ===== GAME CONTAINER ===== */
 #game {
-  position: relative;
-  width: 1500px;
-  height: 600px;
-  background: #fdfcfc;
-  overflow: hidden;
-  margin: 20px auto;
-  border: 3px solid #333;
+  position: relative; /* Establish positioning context for children */
+  width: 1500px; /* Fixed game width */
+  height: 600px; /* Fixed game height */
+  background: #fdfcfc; /* Light gray background */
+  overflow: hidden; /* Hide overflow content */
+  margin: 20px auto; /* Center container with top/bottom margin */
+  border: 3px solid #333; /* Dark border around game area */
 }
 
+/* ===== BACKGROUND ===== */
 #background {
-  position: absolute;
-  width: 3000px; /* Double the game width for seamless scrolling */
-  height: 600px;
-  animation: scrollBg 15s linear infinite;
-  animation-play-state: paused;
+  position: absolute; /* Position within game container */
+  width: 3000px; /* Double game width for seamless scrolling */
+  height: 600px; /* Match game height */
+  animation: scrollBg 15s linear infinite; /* Continuous scroll animation */
+  animation-play-state: paused; /* Start paused until game begins */
 }
 
+/* Background scrolling animation */
 @keyframes scrollBg {
   from {
-    left: 0;
+    left: 0; /* Start at initial position */
   }
   to {
-    left: -1500px; /* Scroll by game width */
+    left: -1500px; /* Scroll left by exactly one game width */
   }
 }
 
+/* ===== PLAYER CHARACTER ===== */
 #player {
-  position: absolute;
-  bottom: 50px;
-  left: 100px;
-  width: 120px;
-  transition: bottom 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  position: absolute; /* Position within game container */
+  bottom: 50px; /* Position from bottom of container */
+  left: 100px; /* Position from left of container */
+  width: 120px; /* Fixed width */
+  transition: bottom 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth jump animation */
 }
 
+/* ===== OBSTACLE (ROCK) ===== */
 #rock {
-  position: absolute;
-  bottom: 60px;
-  right: -150px;
-  width: 120px;
-  animation: moveRock 2.5s linear infinite;
-  animation-play-state: paused;
+  position: absolute; /* Position within game container */
+  bottom: 60px; /* Slightly above player's base */
+  right: -150px; /* Start off-screen */
+  width: 120px; /* Match player width */
+  animation: moveRock 2.5s linear infinite; /* Movement animation */
+  animation-play-state: paused; /* Start paused until game begins */
 }
 
+/* Rock movement animation */
 @keyframes moveRock {
   from {
-    right: -150px;
+    right: -150px; /* Start off-screen right */
   }
   to {
-    right: 1600px; /* Move across entire game width + extra */
+    right: 1600px; /* Move completely across and off left side */
   }
 }
 
+/* ===== GAME OVER SCREEN ===== */
 #gameOver {
-  display: none;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 40%;
-  font-size: 4rem;
-  color: red;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 20px;
-  z-index: 10;
+  display: none; /* Hidden by default */
+  position: absolute; /* Position over game content */
+  width: 100%; /* Full width of game container */
+  text-align: center; /* Center text horizontally */
+  top: 40%; /* Position vertically */
+  font-size: 4rem; /* Large text size */
+  color: red; /* Attention-grabbing color */
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+  padding: 20px; /* Add spacing around text */
+  z-index: 10; /* Ensure it appears above other elements */
 }
 
+/* ===== START SCREEN ===== */
 #startScreen {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
-  color: white;
+  position: absolute; /* Position over game content */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  z-index: 20; /* Highest z-index to ensure visibility */
+  color: white; /* Light text for contrast */
 }
 
 #startScreen h1 {
-  font-size: 4rem;
-  margin-bottom: 2rem;
+  font-size: 4rem; /* Large title text */
+  margin-bottom: 2rem; /* Spacing below title */
 }
 
+/* ===== BUTTON STYLES ===== */
 #startBtn {
-  padding: 15px 40px;
-  font-size: 1.5rem;
-  background-color: #ff00c3;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.3s;
-  color: white;
+  padding: 15px 40px; /* Generous button size */
+  font-size: 1.5rem; /* Large readable text */
+  background-color: #ff00c3; /* Vibrant pink color */
+  border: none; /* Remove default border */
+  border-radius: 15px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  transition: all 0.3s; /* Smooth hover effects */
+  color: white; /* White text for contrast */
 }
 
 #startBtn:hover {
-  background-color: #f973da;
-  transform: scale(1.05);
+  background-color: #f973da; /* Lighter pink on hover */
+  transform: scale(1.05); /* Slight grow effect */
 }
 
+/* ===== CONTROL BUTTONS CONTAINER ===== */
 #controls {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 20px 0;
-  width: 100%;
+  display: flex; /* Arrange buttons in row */
+  justify-content: center; /* Center horizontally */
+  gap: 30px; /* Space between buttons */
+  margin: 20px 0; /* Vertical spacing */
+  width: 100%; /* Full width */
 }
 
+/* Jump button styling */
 #jumpBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
-  background-color: #f12fa0;
+  background-color: #f12fa0; /* Pink color */
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -131,14 +145,15 @@ body {
 }
 
 #jumpBtn:hover {
-  background-color: #f964bb;
-  transform: scale(1.05);
+  background-color: #f964bb; /* Lighter pink */
+  transform: scale(1.05); /* Grow effect */
 }
 
+/* Replay button styling */
 #replayBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
-  background-color: #2ac59c;
+  background-color: #2ac59c; /* Teal color */
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -146,23 +161,25 @@ body {
 }
 
 #replayBtn:hover {
-  background-color: #6bcdb3;
-  transform: scale(1.05);
+  background-color: #6bcdb3; /* Lighter teal */
+  transform: scale(1.05); /* Grow effect */
 }
-/* Previous CSS remains the same, just add this at the bottom */
 
+/* ===== SCORE DISPLAY ===== */
 #score {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: #333;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 10px 20px;
-  border-radius: 10px;
-  z-index: 5;
+  position: absolute; /* Position over game content */
+  top: 20px; /* Near top of game container */
+  right: 20px; /* Near right edge */
+  font-size: 2rem; /* Large readable text */
+  color: #333; /* Dark gray for contrast */
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  padding: 10px 20px; /* Comfortable spacing */
+  border-radius: 10px; /* Softened corners */
+  z-index: 5; /* Ensure visibility above background */
 }
-/* Add this new animation at the bottom of your CSS file */
+
+/* ===== ANIMATIONS ===== */
+/* Faster rock movement animation (unused in current HTML) */
 @keyframes moveRockFast {
   from {
     right: -150px;
@@ -171,47 +188,48 @@ body {
     right: 1600px;
   }
 }
-/* Squish animation */
+
+/* Squish animation for player character */
 @keyframes squish {
   0% {
-    transform: scaleY(1);
+    transform: scaleY(1); /* Normal height */
   }
   25% {
-    transform: scaleY(0.7); /* Squished vertically */
+    transform: scaleY(0.7); /* Compress vertically */
   }
   50% {
-    transform: scaleY(1.1); /* Slightly stretched vertically */
+    transform: scaleY(1.1); /* Slight stretch */
   }
   75% {
-    transform: scaleY(0.9); /* Back to normal stretch */
+    transform: scaleY(0.9); /* Partial recovery */
   }
   100% {
-    transform: scaleY(1); /* Normal size */
+    transform: scaleY(1); /* Back to normal */
   }
 }
 
-/* Player squish effect */
+/* Apply squish animation class */
 .squish {
   animation: squish 0.3s ease-out;
 }
 
-/* Melting animation */
+/* Melting animation for game over */
 @keyframes melt {
   0% {
-    transform: scaleY(1); /* Full size */
+    transform: scaleY(1); /* Full height */
     opacity: 1; /* Fully visible */
   }
   50% {
-    transform: scaleY(0.5); /* Shrink vertically */
-    opacity: 0.5; /* Partially faded */
+    transform: scaleY(0.5); /* Half height */
+    opacity: 0.5; /* Semi-transparent */
   }
   100% {
-    transform: scaleY(0.2); /* Further shrink vertically */
-    opacity: 0; /* Fully invisible */
+    transform: scaleY(0.2); /* Nearly flat */
+    opacity: 0; /* Fully transparent */
   }
 }
 
-/* Player melting effect */
+/* Apply melt animation class */
 .melt {
-  animation: melt 2s forwards ease-out;
+  animation: melt 2s forwards ease-out; /* Maintain final state with 'forwards' */
 }
