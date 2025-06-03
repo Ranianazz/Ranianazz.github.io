@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jump - Multiplayer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game">
+      <img id="background" src="scrollimage.png" alt="Background" />
+      <img id="player1" class="player" src="cat1.png" alt="Player 1" />
+      <img id="player2" class="player" src="cat2.png" alt="Player 2" />
+      <img id="rock" src="rock.png" alt="Obstacle" />
+      <div id="score1" class="score">Player 1: 0</div>
+      <div id="score2" class="score">Player 2: 0</div>
+      <div id="gameOver">Game Over</div>
+      <div id="startScreen">
+        <h1>Jump</h1>
+        <div id="playerSelection">
+          <button id="singlePlayerBtn">1 Player</button>
+          <button id="multiplayerBtn">2 Players</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button id="jumpBtn1">Jump (Player 1)</button>
+      <button id="jumpBtn2">Jump (Player 2)</button>
+      <button id="replayBtn">Restart</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

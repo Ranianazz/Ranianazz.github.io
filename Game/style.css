@@ -24,7 +24,7 @@ body {
 
 #background {
   position: absolute;
-  width: 3000px; /* Double the game width for seamless scrolling */
+  width: 3000px;
   height: 600px;
   animation: scrollBg 15s linear infinite;
   animation-play-state: paused;
@@ -35,23 +35,31 @@ body {
     left: 0;
   }
   to {
-    left: -1500px; /* Scroll by game width */
+    left: -1500px;
   }
 }
 
-#player {
+.player {
   position: absolute;
   bottom: 50px;
-  left: 100px;
   width: 120px;
   transition: bottom 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+#player1 {
+  left: 100px;
+}
+
+#player2 {
+  left: 250px;
+  display: none;
+}
+
 #rock {
   position: absolute;
-  bottom: 60px;
+  bottom: 40px;
   right: -150px;
-  width: 120px;
+  width: 100px;
   animation: moveRock 2.5s linear infinite;
   animation-play-state: paused;
 }
@@ -61,7 +69,7 @@ body {
     right: -150px;
   }
   to {
-    right: 1600px; /* Move across entire game width + extra */
+    right: 1600px;
   }
 }
 
@@ -96,7 +104,13 @@ body {
   margin-bottom: 2rem;
 }
 
-#startBtn {
+#playerSelection {
+  display: flex;
+  gap: 30px;
+}
+
+#singlePlayerBtn,
+#multiplayerBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
   background-color: #ff00c3;
@@ -107,9 +121,29 @@ body {
   color: white;
 }
 
-#startBtn:hover {
+#singlePlayerBtn:hover,
+#multiplayerBtn:hover {
   background-color: #f973da;
   transform: scale(1.05);
+}
+
+.score {
+  position: absolute;
+  top: 20px;
+  font-size: 2rem;
+  color: #333;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 5;
+}
+
+#score1 {
+  left: 20px;
+}
+
+#score2 {
+  right: 20px;
 }
 
 #controls {
@@ -120,98 +154,41 @@ body {
   width: 100%;
 }
 
-#jumpBtn {
+#jumpBtn1,
+#jumpBtn2,
+#replayBtn {
   padding: 15px 40px;
   font-size: 1.5rem;
-  background-color: #f12fa0;
   border: none;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-#jumpBtn:hover {
+#jumpBtn1 {
+  background-color: #f12fa0;
+}
+
+#jumpBtn1:hover {
   background-color: #f964bb;
   transform: scale(1.05);
 }
 
+#jumpBtn2 {
+  background-color: #4a9ff5;
+  display: none;
+}
+
+#jumpBtn2:hover {
+  background-color: #7db8f7;
+  transform: scale(1.05);
+}
+
 #replayBtn {
-  padding: 15px 40px;
-  font-size: 1.5rem;
   background-color: #2ac59c;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.3s;
 }
 
 #replayBtn:hover {
   background-color: #6bcdb3;
   transform: scale(1.05);
-}
-/* Previous CSS remains the same, just add this at the bottom */
-
-#score {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: #333;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 10px 20px;
-  border-radius: 10px;
-  z-index: 5;
-}
-/* Add this new animation at the bottom of your CSS file */
-@keyframes moveRockFast {
-  from {
-    right: -150px;
-  }
-  to {
-    right: 1600px;
-  }
-}
-/* Squish animation */
-@keyframes squish {
-  0% {
-    transform: scaleY(1);
-  }
-  25% {
-    transform: scaleY(0.7); /* Squished vertically */
-  }
-  50% {
-    transform: scaleY(1.1); /* Slightly stretched vertically */
-  }
-  75% {
-    transform: scaleY(0.9); /* Back to normal stretch */
-  }
-  100% {
-    transform: scaleY(1); /* Normal size */
-  }
-}
-
-/* Player squish effect */
-.squish {
-  animation: squish 0.3s ease-out;
-}
-
-/* Melting animation */
-@keyframes melt {
-  0% {
-    transform: scaleY(1); /* Full size */
-    opacity: 1; /* Fully visible */
-  }
-  50% {
-    transform: scaleY(0.5); /* Shrink vertically */
-    opacity: 0.5; /* Partially faded */
-  }
-  100% {
-    transform: scaleY(0.2); /* Further shrink vertically */
-    opacity: 0; /* Fully invisible */
-  }
-}
-
-/* Player melting effect */
-.melt {
-  animation: melt 2s forwards ease-out;
 }

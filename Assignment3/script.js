@@ -1,11 +1,10 @@
 const player = document.getElementById("player");
 const rock = document.getElementById("rock");
 const gameOver = document.getElementById("gameOver");
-const jumpBtn = document.getElementById("jumpBtn");
 const replayBtn = document.getElementById("replayBtn");
 const background = document.getElementById("background");
-const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
+const startBtn = document.getElementById("startBtn");
 const scoreDisplay = document.getElementById("score");
 
 // Game state variables
@@ -15,13 +14,14 @@ let gameRunning = false;
 let jumpAnimation;
 let score = 0;
 let rockPassed = false;
+let jumpCount = 0;
 
 // Difficulty variables
-let baseSpeed = 2.5; // Initial rock animation duration (seconds)
+let baseSpeed = 2.5;
 let currentSpeed = baseSpeed;
-let speedIncrease = 0.1; // Speed increase per successful jump (seconds)
-let minSpeed = 1.0; // Maximum difficulty (minimum duration)
-let backgroundSpeed = 15; // Background animation duration
+let speedIncrease = 0.1;
+let minSpeed = 1.0;
+let backgroundSpeed = 15;
 
 function startGame() {
   gameStarted = true;
@@ -31,56 +31,61 @@ function startGame() {
   scoreDisplay.textContent = "Score: 0";
   currentSpeed = baseSpeed;
 
-  // Start animations
   background.style.animationPlayState = "running";
   rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
   rock.style.animationPlayState = "running";
 }
 
+function triggerSquish() {
+  player.classList.remove("squish");
+  void player.offsetWidth; // Force reflow
+  player.classList.add("squish");
+}
+
 function jump() {
-  if (!jumping && gameRunning) {
-    jumping = true;
-    const jumpHeight = 450;
-    const jumpDuration = 500;
-    const startTime = Date.now();
+  if (jumpCount >= 2 || !gameRunning) return;
 
-    cancelAnimationFrame(jumpAnimation);
+  jumpCount++;
+  jumping = true;
+  triggerSquish(); // Squish at start of jump
 
-    function animateJump() {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / jumpDuration, 1);
+  const jumpHeight = 450;
+  const jumpDuration = 500;
+  const startTime = Date.now();
 
-      // Quadratic easing for smooth jump arc
-      if (progress < 0.5) {
-        // Rising
-        player.style.bottom =
-          50 + jumpHeight * (1 - Math.pow(progress * 2 - 1, 2)) + "px";
-      } else {
-        // Falling
-        player.style.bottom =
-          50 + jumpHeight * Math.pow((progress - 0.5) * 2, 2) + "px";
-      }
+  cancelAnimationFrame(jumpAnimation);
 
-      if (progress < 1) {
-        jumpAnimation = requestAnimationFrame(animateJump);
-      } else {
-        player.style.bottom = "50px";
-        jumping = false;
-      }
+  function animateJump() {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / jumpDuration, 1);
+
+    if (progress < 0.5) {
+      player.style.bottom =
+        50 + jumpHeight * (1 - Math.pow(progress * 2 - 1, 2)) + "px";
+    } else {
+      player.style.bottom =
+        50 + jumpHeight * Math.pow((progress - 0.5) * 2, 2) + "px";
     }
 
-    animateJump();
+    if (progress < 1) {
+      jumpAnimation = requestAnimationFrame(animateJump);
+    } else {
+      player.style.bottom = "50px";
+      triggerSquish(); // Squish on landing
+      jumping = false;
+      jumpCount = 0;
+    }
   }
+
+  animateJump();
 }
 
 function updateRockSpeed() {
-  // Calculate new speed and update animation
   rock.style.animation = "none";
-  rock.offsetHeight; // Trigger reflow
+  rock.offsetHeight;
   rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
   rock.style.animationPlayState = "running";
 
-  // Also increase background speed slightly for visual feedback
   backgroundSpeed = Math.max(10, backgroundSpeed - 0.5);
   background.style.animation = `scrollBg ${backgroundSpeed}s linear infinite`;
 }
@@ -101,20 +106,17 @@ function updateScore() {
   const playerRect = player.getBoundingClientRect();
   const rockRect = rock.getBoundingClientRect();
 
-  // Check if rock has passed the player without collision
   if (rockRect.right < playerRect.left && !rockPassed) {
     rockPassed = true;
     score++;
     scoreDisplay.textContent = `Score: ${score}`;
 
-    // Increase speed after each successful jump
     if (currentSpeed > minSpeed) {
       currentSpeed -= speedIncrease;
       updateRockSpeed();
     }
   }
 
-  // Reset the flag when rock is back to the right of the player
   if (rockRect.left > playerRect.right) {
     rockPassed = false;
   }
@@ -123,59 +125,72 @@ function updateScore() {
 function endGame() {
   gameRunning = false;
   gameOver.style.display = "block";
+
+  // Trigger the melting effect on the player
+  player.classList.add("melt");
+
+  // Stop the rock and background animations
   rock.style.animationPlayState = "paused";
   background.style.animationPlayState = "paused";
   cancelAnimationFrame(jumpAnimation);
+
+  // Show the restart button when the game ends
+  replayBtn.style.display = "inline-block";
 }
 
 function resetGame() {
-  // Reset player
   player.style.bottom = "50px";
+  player.classList.remove("melt"); // Reset melt effect
   jumping = false;
+  jumpCount = 0;
 
-  // Reset difficulty
   currentSpeed = baseSpeed;
   backgroundSpeed = 15;
 
-  // Reset rock
   rock.style.animation = "none";
   rock.offsetHeight;
   rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
   rock.style.animationPlayState = "running";
 
-  // Reset background
   background.style.animation = "none";
   background.offsetHeight;
   background.style.animation = `scrollBg ${backgroundSpeed}s linear infinite`;
   background.style.animationPlayState = "running";
 
-  // Reset game state
   gameOver.style.display = "none";
+  replayBtn.style.display = "none"; // Hide restart button after reset
+
   gameRunning = true;
   score = 0;
   scoreDisplay.textContent = "Score: 0";
   rockPassed = false;
+
+  startGame(); // Restart the game
 }
 
-// Event listeners
-document.addEventListener("keydown", (e) => {
-  if (e.code === "Space") {
-    e.preventDefault();
+// Event listener for clicking anywhere to start the game and jump
+document.addEventListener("click", (e) => {
+  if (!gameStarted) {
+    startGame();
+  } else if (gameRunning) {
     jump();
   }
 });
 
-jumpBtn.addEventListener("click", jump);
-startBtn.addEventListener("click", startGame);
+// Event listener for the start button
+startBtn.addEventListener("click", () => {
+  startGame();
+});
+
+// Restart the game when the restart button is clicked
 replayBtn.addEventListener("click", resetGame);
 
-// Initialize game with animations paused
+// Init
 background.style.animation = `scrollBg ${backgroundSpeed}s linear infinite`;
 background.style.animationPlayState = "paused";
 rock.style.animation = `moveRock ${currentSpeed}s linear infinite`;
 rock.style.animationPlayState = "paused";
 
-// Start game loop
 function gameLoop() {
   if (gameRunning) {
     if (checkCollision()) {
