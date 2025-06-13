@@ -131,6 +131,28 @@ function updateScore() {
       }
     }
 
+    /* 
+   if(!player.passed){}
+   if (!player1.passed && !player2passed) {
+      // Mark both players as having passed
+      player1.passed = true;
+      player2.passed = true;
+
+      // Increase both scores
+      player1.score++;
+      player2.score++;
+
+      // Update both score displays
+      scoreDisplay1.textContent = `Player 1: ${player1.score}`;
+      scoreDisplay2.textContent = `Player 2: ${player2.score}`;
+
+      // Increase difficulty
+      if (currentSpeed > minSpeed) {
+        currentSpeed -= speedIncrease;
+        updateRockSpeed();
+      }
+    }*/
+
     // Reset passed flag when rock is back around
     if (rockRect.left > playerRect.right) {
       player.passed = false;
