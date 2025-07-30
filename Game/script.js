@@ -31,7 +31,6 @@ function startGame(isMultiplayer) {
   gameRunning = true;
   currentSpeed = 2500;
 
-  // Reset player states
   players[0].active = true;
   players[1].active = multiplayer;
 
@@ -55,7 +54,6 @@ function startGame(isMultiplayer) {
   rock.style.animation = `moveRock ${currentSpeed / 1000}s linear infinite`;
   rock.style.animationPlayState = "running";
   background.style.animationPlayState = "running";
-
   rock.style.right = "-150px";
 
   gameLoop();
@@ -89,7 +87,8 @@ function checkCollision(index) {
   );
 
   if (collided) {
-    eliminatePlayer(index);
+    // Slight delay to allow score update before elimination
+    setTimeout(() => eliminatePlayer(index), 0);
   }
 
   return collided;
@@ -114,47 +113,23 @@ function updateScore() {
 
     const playerRect = player.element.getBoundingClientRect();
 
-    // Only count score if rock passed player
-    if (rockRect.right < playerRect.left && !player.passed) {
-      player.passed = true;
+    if (!player.passed && rockRect.right < playerRect.left) {
       player.score++;
+      player.passed = true;
+
       if (index === 0) {
         scoreDisplay1.textContent = `Player 1: ${player.score}`;
       } else {
         scoreDisplay2.textContent = `Player 2: ${player.score}`;
       }
 
-      // Increase difficulty
       if (currentSpeed > minSpeed) {
         currentSpeed -= speedIncrease;
         updateRockSpeed();
       }
     }
 
-    /* 
-   if(!player.passed){}
-   if (!player1.passed && !player2passed) {
-      // Mark both players as having passed
-      player1.passed = true;
-      player2.passed = true;
-
-      // Increase both scores
-      player1.score++;
-      player2.score++;
-
-      // Update both score displays
-      scoreDisplay1.textContent = `Player 1: ${player1.score}`;
-      scoreDisplay2.textContent = `Player 2: ${player2.score}`;
-
-      // Increase difficulty
-      if (currentSpeed > minSpeed) {
-        currentSpeed -= speedIncrease;
-        updateRockSpeed();
-      }
-    }*/
-
-    // Reset passed flag when rock is back around
-    if (rockRect.left > playerRect.right) {
+    if (rockRect.left > playerRect.right + 50) {
       player.passed = false;
     }
   });
@@ -169,10 +144,11 @@ function updateRockSpeed() {
 function gameLoop() {
   if (!gameRunning) return;
 
+  updateScore(); // ✅ Score FIRST to ensure everyone gets credit before elimination
+
   if (players[0].active) checkCollision(0);
   if (multiplayer && players[1].active) checkCollision(1);
 
-  updateScore();
   requestAnimationFrame(gameLoop);
 }
 
@@ -184,7 +160,6 @@ function endGame() {
 }
 
 function resetGame() {
-  // Reset game visuals and logic
   gameRunning = false;
   rock.style.animation = "none";
   background.style.animationPlayState = "paused";
